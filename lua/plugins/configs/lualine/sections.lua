@@ -7,8 +7,9 @@ local M = {}
 M.a = {
     {
         function()
-            return "█"
+            return "⏽"
         end,
+        condition = nil,
         left_padding = 0,
         right_padding = 0
     }
@@ -19,11 +20,12 @@ M.b = {
         "b:gitsigns_head",
         icon = " ",
         color = {
-          fg = colors.red,
-          gui = "bold"
+            fg = colors.red,
+            gui = "bold"
         },
         condition = conditions.git,
-        left_padding = 0
+        left_padding = 0,
+        right_padding = 0
     },
     {
         "diff",
@@ -47,14 +49,14 @@ M.c = {
     {
         "filetype",
         color = {
-            fg = colors.purple,
+            fg = colors.purple
         },
         condition = conditions.nvimtree
     },
     {
         "filename",
         color = {
-            fg = colors.purple,
+            fg = colors.purple
         },
         condition = conditions.empty,
         symbols = {
@@ -67,13 +69,13 @@ M.c = {
 M.x = {
     {
         "diagnostics",
-        sources = { "nvim_lsp" },
-        sections = { "error", "warn", "info", "hint" },
+        sources = {"nvim_lsp"},
+        sections = {"error", "warn", "info", "hint"},
         symbols = {
-          error = " ",
-          warn = " ",
-          info = " ",
-          hint = ""
+            error = " ",
+            warn = " ",
+            info = " ",
+            hint = ""
         },
         condition = conditions.nvimtree
     },
@@ -96,8 +98,8 @@ M.x = {
         icon = " LSP:",
         condition = conditions.nvimtree,
         color = {
-          fg = colors.yellow,
-          gui = "bold"
+            fg = colors.yellow,
+            gui = "bold"
         }
     }
 }
@@ -107,7 +109,7 @@ M.y = {
         "o:encoding",
         upper = true,
         color = {
-          fg = colors.purple,
+            fg = colors.purple
         },
         left_padding = 0,
         condition = conditions.simple
@@ -115,7 +117,7 @@ M.y = {
     {
         "location",
         color = {
-          gui = "bold"
+            gui = "bold"
         },
         condition = conditions.simple,
         left_padding = 0,
@@ -127,7 +129,7 @@ M.z = {
     {
         "progress",
         color = {
-          fg = colors.purple,
+            fg = colors.purple
         },
         left_padding = 0,
         right_padding = 1,
@@ -156,7 +158,7 @@ M.z = {
         end,
         condition = conditions.simple,
         color = {
-          fg = colors.blue,
+            fg = colors.blue
         },
         left_padding = 0,
         right_padding = 1
@@ -172,7 +174,7 @@ M.z = {
         end,
         right_padding = 0,
         color = {
-          fg = colors.yellow
+            fg = colors.yellow
         },
         condition = conditions.nvimtree
     }

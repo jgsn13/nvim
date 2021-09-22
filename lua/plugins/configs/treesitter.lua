@@ -6,6 +6,8 @@ end
 ts_config.setup {
    ensure_installed = {
       "lua",
+      "typescript",
+      "javascript",
    },
    highlight = {
       enable = true,

@@ -25,7 +25,7 @@ require("lspconfig").sumneko_lua.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     flags = {
-       debounce_text_changes = 150,
+        debounce_text_changes = 150
     },
     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
     settings = {

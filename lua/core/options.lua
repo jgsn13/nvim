@@ -23,7 +23,7 @@ opt.shiftwidth = options.shiftwidth
 opt.smartindent = options.smartindent
 
 -- disable tilde on end of buffer: https://github.com/  neovim/neovim/pull/8546#issuecomment-643643758
-opt.fillchars = { eob = " " }
+opt.fillchars = {eob = " "}
 
 wo.list = true
 opt.listchars = "tab:→ ,trail:•,nbsp:≡,extends:»,precedes:«,eol:↴,space:⋅"

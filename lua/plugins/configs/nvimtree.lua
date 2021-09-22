@@ -1,6 +1,6 @@
 local present, tree_c = pcall(require, "nvim-tree.config")
 if not present then
-   return
+    return
 end
 
 local tree_cb = tree_c.nvim_tree_callback

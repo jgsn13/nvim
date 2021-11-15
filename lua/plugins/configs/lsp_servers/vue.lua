@@ -54,7 +54,5 @@ require("lspconfig").vuels.setup {
             }
         }
     },
-    root_dir = function()
-        return "package.json"
-    end
+    root_dir = require "lspconfig".util.root_pattern("package.json")
 }

@@ -17,28 +17,6 @@ M.autopairs = function()
     }
 end
 
-M.autosave = function()
-    -- autosave.nvim plugin is disabled by default
-    local present, autosave = pcall(require, "autosave")
-    if not present then
-        return
-    end
-
-    autosave.setup {
-        enabled = config.options.plugin.autosave, -- takes boolean value from nvimrc.lua
-        execution_message = "autosaved at : " .. vim.fn.strftime "%H:%M:%S",
-        events = {"InsertLeave", "TextChanged"},
-        conditions = {
-            exists = true,
-            filetype_is_not = {},
-            modifiable = true
-        },
-        clean_command_line_interval = 2500,
-        on_off_commands = true,
-        write_all_buffers = false
-    }
-end
-
 M.blankline = function()
     require("indent_blankline").setup {
         indentLine_enabled = 1,

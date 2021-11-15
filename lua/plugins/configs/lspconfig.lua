@@ -36,7 +36,8 @@ vim.lsp.handlers["textDocument/hover"] =
     vim.lsp.with(
     vim.lsp.handlers.hover,
     {
-        focusable = false,
+        -- focusable = false,
+        focusable = true,
         border = "single"
     }
 )

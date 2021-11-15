@@ -16,6 +16,7 @@ opt.encoding = "utf-8"
 opt.clipboard = options.clipboard
 opt.cmdheight = options.cmdheight
 opt.cul = true -- cursor line
+vim.cmd [[set guicursor=]]
 
 -- Indentline
 opt.expandtab = options.expandtab
@@ -31,6 +32,7 @@ opt.listchars = "tab:→ ,trail:•,nbsp:≡,extends:»,precedes:«,eol:↴,spac
 opt.hidden = options.hidden
 opt.ignorecase = options.ignorecase
 opt.mouse = options.mouse
+opt.scrolloff = 10
 
 -- Numbers
 opt.number = options.number

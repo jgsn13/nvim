@@ -2,6 +2,46 @@ require("formatter").setup(
     {
         logging = false,
         filetype = {
+            html = {
+                -- prettier
+                function()
+                    return {
+                        exe = "prettier",
+                        args = {"--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
+                        stdin = true
+                    }
+                end
+            },
+            css = {
+                -- prettier
+                function()
+                    return {
+                        exe = "prettier",
+                        args = {"--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
+                        stdin = true
+                    }
+                end
+            },
+            scss = {
+                -- prettier
+                function()
+                    return {
+                        exe = "prettier",
+                        args = {"--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
+                        stdin = true
+                    }
+                end
+            },
+            sass = {
+                -- prettier
+                function()
+                    return {
+                        exe = "prettier",
+                        args = {"--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
+                        stdin = true
+                    }
+                end
+            },
             javascript = {
                 -- prettier
                 function()
@@ -52,7 +92,28 @@ require("formatter").setup(
                         cwd = vim.fn.expand("%:p:h") -- Run clang-format in cwd of the file.
                     }
                 end
-            }
+            },
+            c = {
+                -- clang-format
+                function()
+                    return {
+                        exe = "clang-format",
+                        args = {"--assume-filename", vim.api.nvim_buf_get_name(0)},
+                        stdin = true,
+                        cwd = vim.fn.expand("%:p:h") -- Run clang-format in cwd of the file.
+                    }
+                end
+            },
+            python = {
+                -- autopep8
+                function()
+                    return {
+                        exe = "autopep8",
+                        args = {"--in-place", vim.api.nvim_buf_get_name(0)},
+                        stdin = false
+                    }
+                end
+            },
         }
     }
 )
@@ -62,7 +123,7 @@ vim.api.nvim_exec(
     [[
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePost *.js,*.ts,*.rs,*.lua FormatWrite
+  autocmd BufWritePost *.html,*.css,*.scss,*.sass,*.js,*.ts,*.rs,*.lua,*.cpp,*.c,*.py FormatWrite
 augroup END
 ]],
     true

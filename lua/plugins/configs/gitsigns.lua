@@ -26,7 +26,7 @@ gitsigns.setup {
         topdelete = {hl = "DiffDelete", text = "‾", numhl = "GitSignsDeleteNr"}
     },
     status_formatter = nil, -- Use default
-    watch_index = {
+    watch_gitdir = {
         interval = 100
     }
 }

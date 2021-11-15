@@ -6,12 +6,10 @@ local M = {}
 
 M.a = {
     {
-        function()
-            return "⏽"
-        end,
-        condition = nil,
-        left_padding = 0,
-        right_padding = 0
+        "mode",
+        color = {
+            gui = "bold"
+        }
     }
 }
 
@@ -23,9 +21,11 @@ M.b = {
             fg = colors.red,
             gui = "bold"
         },
-        condition = conditions.git,
-        left_padding = 0,
-        right_padding = 0
+        cond = conditions.git,
+        padding = {
+            left = 0,
+            right = 0
+        }
     },
     {
         "diff",
@@ -40,29 +40,34 @@ M.b = {
             end
         end,
         colored = true,
-        symbols = {added = "  ", modified = " 柳", removed = " "},
-        condition = conditions.width
+        symbols = {added = "  ", modified = " 柳", removed = "  "},
+        cond = conditions.width
     }
 }
 
 M.c = {
     {
         "filetype",
+        icon_only = false, -- Display only icon for filetype
         color = {
             fg = colors.purple
         },
-        condition = conditions.nvimtree
+        cond = conditions.nvimtree
     },
     {
         "filename",
-        color = {
-            fg = colors.purple
-        },
-        condition = conditions.empty,
+        file_status = true, -- displays file status (readonly status, modified status)
+        path = 0, -- 0 = just filename, 1 = relative path, 2 = absolute path
+        -- shorting_target = 40, -- Shortens path to leave 40 space in the window
+        -- for other components. Terrible name any suggestions?
         symbols = {
             modified = " ﱣ",
             readonly = " "
-        }
+        },
+        color = {
+            fg = colors.purple
+        },
+        cond = conditions.empty
     }
 }
 
@@ -75,9 +80,9 @@ M.x = {
             error = " ",
             warn = " ",
             info = " ",
-            hint = ""
+            hint = " "
         },
-        condition = conditions.nvimtree
+        cond = conditions.nvimtree
     },
     {
         function()
@@ -96,9 +101,9 @@ M.x = {
             return msg
         end,
         icon = " LSP:",
-        condition = conditions.nvimtree,
+        cond = conditions.nvimtree,
         color = {
-            fg = colors.yellow,
+            fg = colors.gray_fg,
             gui = "bold"
         }
     }
@@ -111,30 +116,37 @@ M.y = {
         color = {
             fg = colors.purple
         },
-        left_padding = 0,
-        condition = conditions.simple
+        padding = {
+            left = 0,
+            right = 1
+        },
+        cond = conditions.simple
     },
     {
         "location",
         color = {
             gui = "bold"
         },
-        condition = conditions.simple,
-        left_padding = 0,
-        right_padding = 1
-    }
-}
-
-M.z = {
+        cond = conditions.simple,
+        padding = {
+            left = 0,
+            right = 0
+        }
+    },
     {
         "progress",
         color = {
             fg = colors.purple
         },
-        left_padding = 0,
-        right_padding = 1,
-        condition = conditions.simple
-    },
+        padding = {
+            left = 0,
+            right = 1
+        },
+        cond = conditions.simple
+    }
+}
+
+M.z = {
     {
         function()
             local function format_file_size(file)
@@ -156,12 +168,27 @@ M.z = {
             end
             return format_file_size(file) .. " "
         end,
-        condition = conditions.simple,
+        cond = conditions.simple,
         color = {
             fg = colors.blue
         },
-        left_padding = 0,
-        right_padding = 1
+        padding = {
+            left = 0,
+            right = 1
+        }
+    },
+    {
+        "fileformat",
+        symbols = {
+            unix = "",
+            dos = "",
+            mac = "" -- e711
+        },
+        cond = conditions.simple,
+        padding = {
+            left = 0,
+            right = 1
+        }
     },
     {
         function()
@@ -172,11 +199,13 @@ M.z = {
             local index = math.ceil(line_ratio * #chars)
             return chars[index]
         end,
-        right_padding = 0,
+        padding = {
+            right = 0
+        },
         color = {
             fg = colors.yellow
         },
-        condition = conditions.nvimtree
+        cond = conditions.nvimtree
     }
 }
 

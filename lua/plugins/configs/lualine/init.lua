@@ -1,4 +1,5 @@
 vim.o.laststatus = 2
+vim.o.showmode = false
 
 local theme = require("plugins.configs.lualine.theme")
 
@@ -6,12 +7,11 @@ local sections = require("plugins.configs.lualine.sections")
 
 require "lualine".setup {
     options = {
-        icons_enabled = 1,
-        padding = 1,
+        icons_enabled = true,
         theme = theme(),
         component_separators = {left = "", right = ""},
         section_separators = {left = "", right = ""},
-        disabled_filetypes = {}
+        always_divide_middle = true
     },
     sections = {
         lualine_a = sections.a,

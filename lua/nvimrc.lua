@@ -48,13 +48,10 @@ M.options = {
 }
 
 -- these are plugin related options
-M.options.plugin = {
-    autosave = false -- autosave on changed text or insert mode leave
-}
+M.options.plugin = {}
 
 -- enable and disable plugins (false for disable)
 M.plugin_status = {
-    autosave = false, -- to autosave files
     blankline = true, -- beautified blank lines
     bufferline = true, -- buffer shown as tabs
     colorizer = true,

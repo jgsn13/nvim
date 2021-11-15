@@ -1,3 +1,7 @@
+if vim.g.nvui then
+    vim.cmd [[set guifont=FiraCode\ NF:h11]]
+end
+
 local init_modules = {
     "core"
 }

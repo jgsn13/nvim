@@ -84,6 +84,9 @@ M.misc = function()
         map("v", "<C-h>", ":foldclose<CR>")
         map("v", "<C-l>", ":foldopen<CR>")
 
+        -- Display search result in center of the screen
+        map("n", "n", "nzz")
+
         -- navigation within insert mode
         if config.options.insert_nav then
             local inav = maps.insert_nav

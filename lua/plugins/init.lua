@@ -29,7 +29,7 @@ return packer.startup(
         }
 
         use {
-            "hoob3rt/lualine.nvim",
+            "nvim-lualine/lualine.nvim",
             disable = not plugin_status.lualine,
             after = "nvim-web-devicons",
             config = function()
@@ -108,15 +108,11 @@ return packer.startup(
             end
         }
 
-        -- load autosave only if its globally enabled
         use {
-            disable = not plugin_status.autosave,
-            "Pocco81/AutoSave.nvim",
+            "glepnir/lspsaga.nvim",
+            after = "nvim-lspconfig",
             config = function()
-                require("plugins.configs.others").autosave()
-            end,
-            cond = function()
-                return require("core.utils").load_config().options.plugin.autosave == true
+                require "plugins.configs.lspsaga"
             end
         }
 
@@ -180,9 +176,16 @@ return packer.startup(
         }
 
         use {
-            "mfussenegger/nvim-jdtls",
-            after = "nvim-cmp"
+            "hrsh7th/cmp-calc",
+            after = "cmp-path"
         }
+
+        use {
+            "hrsh7th/cmp-cmdline",
+            after = "cmp-calc"
+        }
+
+        use "mfussenegger/nvim-jdtls"
 
         -- misc plugins
         use {
@@ -197,7 +200,14 @@ return packer.startup(
             "mhartington/formatter.nvim",
             disable = not plugin_status.formatter,
             config = function()
-                require "plugins.configs.formatter"
+                require("plugins.configs.formatter")
+            end
+        }
+
+        use {
+            "mfussenegger/nvim-dap",
+            config = function()
+                require("plugins.configs.dap")
             end
         }
 
@@ -219,7 +229,7 @@ return packer.startup(
         -- file managing , picker etc
         use {
             "kyazdani42/nvim-tree.lua",
-            cmd = {"NvimTreeToggle", "NvimTreeFocus"},
+            cmd = {"NvimTreeToggle", "NvimTreeFocus", "NvimTreeRefresh"},
             config = function()
                 require "plugins.configs.nvimtree"
             end,
@@ -267,5 +277,8 @@ return packer.startup(
                 require("core.mappings").fterm()
             end
         }
+
+        -- Rust stuff
+        use "simrat39/rust-tools.nvim"
     end
 )

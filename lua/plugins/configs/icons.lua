@@ -5,6 +5,11 @@ end
 
 icons.setup {
     override = {
+        svg = {
+            icon = "",
+            color = "#00ff83",
+            name = "svg"
+        },
         sh = {
             icon = "",
             color = "#565346",
@@ -21,7 +26,7 @@ icons.setup {
             name = "css"
         },
         ts = {
-            icon = "ﯤ",
+            icon = "",
             color = "#0288D1",
             name = "typescript"
         },

@@ -24,7 +24,7 @@ local function on_attach(_, bufnr)
     buf_set_keymap("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
     buf_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
     buf_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-    buf_set_keymap("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+    -- buf_set_keymap("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
     buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
     buf_set_keymap("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
     buf_set_keymap("n", "<A-[>", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
@@ -97,6 +97,11 @@ vim.list_extend(bundles, vim.split(vim.fn.glob("/home/joaquim/LangServers/vscode
 require "lspconfig".jdtls.setup {
     cmd = {"launch_jdtls"},
     filetypes = {"java"},
+    on_attach = on_attach,
+    capabilities = capabilities,
+    flags = {
+        debounce_text_changes = 150
+    },
     root_dir = require "lspconfig".util.root_pattern(
         "build.xml",
         "pom.xml",
@@ -105,11 +110,6 @@ require "lspconfig".jdtls.setup {
         "build.gradle",
         "build.gradle.kts"
     ) or vim.fn.getcwd(),
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = {
-        debounce_text_changes = 150
-    },
     init_options = {
         bundles = bundles
     }

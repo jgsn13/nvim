@@ -13,6 +13,14 @@ return packer.startup(
         -- this is arranged on the basis of when a plugin starts
 
         use {
+            "olimorris/onedarkpro.nvim",
+            event = "VimEnter",
+            config = function()
+                require("onedarkpro").load()
+            end
+        }
+
+        use {
             "nvim-lua/plenary.nvim"
         }
 

@@ -11,13 +11,18 @@ require("plugins.configs.lsp_servers")
 
 -- replace the default lsp diagnostic symbols
 local function lspSymbol(name, icon)
-    vim.fn.sign_define("LspDiagnosticsSign" .. name, {text = icon, numhl = "LspDiagnosticsDefault" .. name})
+    vim.fn.sign_define("DiagnosticSign" .. name, {text = icon, texthl = "Diagnostic" .. name})
 end
 
 lspSymbol("Error", "")
-lspSymbol("Information", "")
-lspSymbol("Hint", "")
-lspSymbol("Warning", "")
+lspSymbol("Information", "")
+lspSymbol("Hint", "")
+lspSymbol("Warn", "")
+
+-- vim.fn.sign_define("DiagnosticSignError", {text = "", texthl = "GruvboxRed"})
+-- vim.fn.sign_define("DiagnosticSignWarn", {text = "", texthl = "GruvboxYellow"})
+-- vim.fn.sign_define("DiagnosticSignInformation", {text = "", texthl = "GruvboxBlue"})
+-- vim.fn.sign_define("DiagnosticSignHint", {text = "", texthl = "GruvboxAqua"})
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
     vim.lsp.with(

@@ -79,8 +79,8 @@ M.x = {
         symbols = {
             error = " ",
             warn = " ",
-            info = " ",
-            hint = " "
+            info = " ",
+            hint = " "
         },
         cond = conditions.nvimtree
     },

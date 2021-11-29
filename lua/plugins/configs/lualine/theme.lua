@@ -1,4 +1,4 @@
-local colors = require("plugins.configs.lualine.colors")
+local colors = require("colors")
 
 return function()
     return {

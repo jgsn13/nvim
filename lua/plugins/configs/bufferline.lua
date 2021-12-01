@@ -16,7 +16,7 @@ bufferline.setup {
         right_trunc_marker = "",
         view = "multiwindow",
         show_buffer_close_icons = true,
-        separator_style = "thick", -- "thick" | "slant" | "thin"
+        separator_style = "thin", -- "thick" | "slant" | "thin"
         always_show_bufferline = true,
         diagnostics = "nvim_lsp", -- "or false"
         custom_filter = function(buf_number)

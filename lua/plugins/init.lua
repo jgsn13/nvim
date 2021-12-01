@@ -29,10 +29,7 @@ return require("packer").startup(
             -- this is arranged on the basis of when a plugin starts
 
             -- Packer can manage itself
-            use {
-                "wbthomason/packer.nvim",
-                event = "VimEnter"
-            }
+            use "wbthomason/packer.nvim"
 
             -- Colorschemes
             use "olimorris/onedarkpro.nvim"

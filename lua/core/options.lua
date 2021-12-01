@@ -38,7 +38,6 @@ opt.fillchars = {eob = " "}
 wo.list = true
 opt.listchars = "tab:→ ,trail:•,nbsp:≡,extends:»,precedes:«,eol:↴,space:⋅"
 
-opt.hidden = options.hidden
 opt.ignorecase = options.ignorecase
 opt.mouse = options.mouse
 opt.scrolloff = 10

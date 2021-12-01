@@ -28,7 +28,6 @@ M.options = {
     copy_cut = true, -- copy cut text ( x key ), visual and normal mode
     copy_del = true, -- copy deleted text ( dd key ), visual and normal mode
     expandtab = true,
-    hidden = true,
     ignorecase = true,
     insert_nav = true, -- navigation in insertmode
     mapleader = " ",

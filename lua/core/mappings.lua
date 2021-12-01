@@ -16,20 +16,6 @@ M.misc = function()
         -- Don't copy the replaced text after pasting in visual mode
         map("v", "p", '"_dP')
 
-        -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
-        -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
-        -- empty mode is same as using :map
-        -- also don't use g[j|k] when in operator pending mode, so it doesn't alter d, y or c behaviour
-        map("", "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', {expr = true})
-        map("", "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', {expr = true})
-        map("", "<Down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', {expr = true})
-        map("", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', {expr = true})
-
-        -- use ESC to turn off search highlighting
-        map("n", "<Esc>", ":noh <CR>")
-    end
-
-    local function optional_mappings()
         -- don't yank text on cut ( x )
         map({"n", "v"}, "x", '"_x')
 
@@ -46,6 +32,23 @@ M.misc = function()
         -- <C-o> to Escape
         map({"i", "v", "c", "s"}, "<C-o>", "<Esc>")
 
+        -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
+        -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
+        -- empty mode is same as using :map
+        -- also don't use g[j|k] when in operator pending mode, so it doesn't alter d, y or c behaviour
+        map("", "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', {expr = true})
+        map("", "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', {expr = true})
+        map("", "<Down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', {expr = true})
+        map("", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', {expr = true})
+
+        -- use ESC to turn off search highlighting
+        map("n", "<Esc>", ":noh <CR>")
+    end
+
+    local function optional_mappings()
+    end
+
+    local function required_mappings()
         -- Text selection
         map("n", "<rightmouse>", "#")
         map("n", "<Leader>x", "viw")
@@ -84,19 +87,16 @@ M.misc = function()
         map("n", "n", "nzz")
 
         -- navigation within insert mode
-        if config.options.insert_nav then
-            local inav = maps.insert_nav
+        local inav = maps.insert_nav
 
-            map("i", inav.backward, "<Left>")
-            map("i", inav.end_of_line, "<End>")
-            map("i", inav.forward, "<Right>")
-            map("i", inav.next_line, "<Up>")
-            map("i", inav.prev_line, "<Down>")
-            map("i", inav.top_of_line, "<ESC>^i")
-        end
-    end
+        map("i", inav.backward, "<Left>")
+        map("i", inav.end_of_line, "<End>")
+        map("i", inav.forward, "<Right>")
+        map("i", inav.next_line, "<Up>")
+        map("i", inav.prev_line, "<Down>")
+        map("i", inav.top_of_line, "<ESC>^i")
 
-    local function required_mappings()
+        -- Buffer stuff
         map("n", maps.close_buffer, ":lua require('core.utils').close_buffer() <CR>") -- close  buffer
         map("n", maps.copy_whole_file, ":%y+ <CR>") -- copy whole file content
         -- map("n", maps.cmd_history, ":<C-f>") -- see cmd history

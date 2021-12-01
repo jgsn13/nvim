@@ -27,7 +27,6 @@ M.options = {
     cmdheight = 1,
     expandtab = true,
     ignorecase = true,
-    insert_nav = true, -- navigation in insertmode
     mapleader = " ",
     mouse = "a",
     number = true,

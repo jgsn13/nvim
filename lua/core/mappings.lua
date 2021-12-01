@@ -31,15 +31,11 @@ M.misc = function()
 
     local function optional_mappings()
         -- don't yank text on cut ( x )
-        if not config.options.copy_cut then
-            map({"n", "v"}, "x", '"_x')
-        end
+        map({"n", "v"}, "x", '"_x')
 
         -- don't yank text on delete ( d | dd )
-        if not config.options.copy_del then
-            map({"n", "v"}, "dd", '"_dd')
-            map({"n", "v"}, "d", '"_d')
-        end
+        map({"n", "v"}, "dd", '"_dd')
+        map({"n", "v"}, "d", '"_d')
 
         -- stay selected on visual mode
         map("v", "y", "ygv")

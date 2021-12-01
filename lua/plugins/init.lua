@@ -132,14 +132,6 @@ return require("packer").startup(
                 end
             }
 
-            use {
-                "glepnir/lspsaga.nvim",
-                after = "nvim-lspconfig",
-                config = function()
-                    require "plugins.configs.lspsaga"
-                end
-            }
-
             -- load luasnips + cmp related in insert mode only
 
             use {

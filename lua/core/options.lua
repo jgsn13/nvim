@@ -1,3 +1,12 @@
+require("onedarkpro").load()
+-- require("moonlight").set()
+-- require("onedark").setup()
+-- require("doom-one").setup()
+-- require("calvera").set()
+-- require("github-theme").setup()
+-- require("catppuccin").setup()
+-- require("onenord").setup()
+
 local opt = vim.opt
 local g = vim.g
 local wo = vim.wo

@@ -1,32 +1,47 @@
-local present, packer = pcall(require, "plugins.packerInit")
+local fn = vim.fn
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+    packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+end
+
+local present, packer = pcall(require, "packer")
 
 if not present then
     return false
 end
 
-local use = packer.use
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+  augroup end
+]])
 
-return packer.startup(
-    function()
+return require('packer').startup(
+    {function(use)
+        -- My plugins here
         local plugin_status = require("core.utils").load_config().plugin_status
 
         -- this is arranged on the basis of when a plugin starts
 
-        use {
-            "olimorris/onedarkpro.nvim",
-            event = "VimEnter",
-            config = function()
-                require("onedarkpro").load()
-            end
-        }
-
-        use {
-            "nvim-lua/plenary.nvim"
-        }
-
+        -- Packer can manage itself
         use {
             "wbthomason/packer.nvim",
             event = "VimEnter"
+        }
+
+        -- Colorschemes
+        use "olimorris/onedarkpro.nvim"
+        use "navarasu/onedark.nvim"
+        use "NTBBloodbath/doom-one.nvim"
+        use "yashguptaz/calvera-dark.nvim"
+        use "shaunsingh/moonlight.nvim"
+        use "projekt0n/github-nvim-theme"
+        use "catppuccin/nvim"
+        use "rmehri01/onenord.nvim"
+
+        use {
+            "nvim-lua/plenary.nvim"
         }
 
         use {
@@ -288,5 +303,25 @@ return packer.startup(
 
         -- Rust stuff
         use "simrat39/rust-tools.nvim"
-    end
-)
+
+        -- Automatically set up your configuration after cloning packer.nvim
+        -- Put this at the end after all plugins
+        if packer_bootstrap then
+          require('packer').sync()
+        end
+    end,
+    config = {
+        display = {
+            open_fn = function()
+                return require("packer.util").float {border = "single"}
+            end,
+            prompt_border = "single"
+        },
+        git = {
+            clone_timeout = 600 -- Timeout, in seconds, for git clones
+        },
+        auto_clean = true,
+        compile_on_sync = true,
+        auto_reload_compiled = true
+    }
+})

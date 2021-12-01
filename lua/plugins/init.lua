@@ -214,6 +214,8 @@ return require("packer").startup(
 
             use "mfussenegger/nvim-jdtls"
 
+            use "simrat39/rust-tools.nvim"
+
             -- misc plugins
             use {
                 "windwp/nvim-autopairs",
@@ -231,12 +233,12 @@ return require("packer").startup(
                 end
             }
 
-            use {
-                "mfussenegger/nvim-dap",
-                config = function()
-                    require("plugins.configs.dap")
-                end
-            }
+            -- use {
+            --     "mfussenegger/nvim-dap",
+            --     config = function()
+            --         require("plugins.configs.dap")
+            --     end
+            -- }
 
             -- Tools
             use "editorconfig/editorconfig-vim"
@@ -304,9 +306,6 @@ return require("packer").startup(
                     require("core.mappings").fterm()
                 end
             }
-
-            -- Rust stuff
-            use "simrat39/rust-tools.nvim"
 
             -- Automatically set up your configuration after cloning packer.nvim
             -- Put this at the end after all plugins

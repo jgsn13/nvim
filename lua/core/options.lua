@@ -10,22 +10,23 @@ require("onedarkpro").load()
 local opt = vim.opt
 local g = vim.g
 local wo = vim.wo
+local cmd = vim.cmd
 
 -- export user config as a global varibale
 g.nvim_user_config = "nvimrc"
 
 local options = require("core.utils").load_config().options
 
-vim.cmd [[filetype plugin indent on]]
-vim.cmd [[set nocompatible]]
-vim.cmd [[set path+=** ]] -- Searches current directory recursively.
+cmd [[filetype plugin indent on]]
+cmd [[set nocompatible]]
+cmd [[set path+=** ]] -- Searches current directory recursively.
 
 opt.backspace = "indent,eol,start"
 opt.encoding = "utf-8"
 opt.clipboard = options.clipboard
 opt.cmdheight = options.cmdheight
 opt.cul = true -- cursor line
-vim.cmd [[set guicursor=]]
+cmd [[set guicursor=]]
 
 -- Indentline
 opt.expandtab = options.expandtab

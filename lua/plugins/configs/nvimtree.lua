@@ -4,67 +4,6 @@ if not present then
 end
 
 local tree_cb = tree_c.nvim_tree_callback
-local g = vim.g
-
-vim.o.termguicolors = true
-
-g.nvim_tree_highlight_opened_files = 0
-g.nvim_tree_allow_resize = 1
-g.nvim_tree_add_trailing = 0 -- append a trailing slash to folder names
-g.nvim_tree_ignore = {".git"}
-g.nvim_tree_gitignore = 0
-g.nvim_tree_indent_markers = 1
-g.nvim_tree_hide_dotfiles = 0
-g.nvim_tree_quit_on_open = 0
-g.nvim_tree_special_files = {}
-g.nvim_tree_root_folder_modifier = table.concat {":t:gs?$?/..", string.rep(" ", 1000), "?:gs?^??"}
-g.nvim_tree_window_picker_exclude = {
-    filetype = {"packer", "qf"},
-    buftype = {"terminal"}
-}
-g.nvim_tree_special_files = {
-    -- ["README.md"] = 1,
-    ["Makefile"] = 1,
-    ["MAKEFILE"] = 1
-}
-
-g.nvim_tree_show_icons = {
-    -- folder_arrows = 1,
-    git = 1,
-    folders = 1,
-    files = 1
-}
-
-g.nvim_tree_icons = {
-    default = "", -- ""
-    symlink = "",
-    git = {
-        unstaged = "✗",
-        staged = "✓",
-        unmerged = "",
-        renamed = "➜",
-        untracked = "★",
-        deleted = "",
-        ignored = "◌"
-    },
-    folder = {
-        arrow_open = "",
-        arrow_closed = "",
-        default = "",
-        open = "",
-        empty = "",
-        empty_open = "",
-        symlink = "",
-        symlink_open = ""
-    },
-    lsp = {
-        hint = "",
-        info = "",
-        warning = "",
-        error = ""
-    }
-}
-
 require("nvim-tree").setup {
     disable_netrw = true,
     hijack_netrw = true,
@@ -145,5 +84,61 @@ require("nvim-tree").setup {
                 {key = "g?", cb = tree_cb("toggle_help")}
             }
         }
+    }
+}
+
+local g = vim.g
+
+vim.o.termguicolors = true
+
+g.nvim_tree_highlight_opened_files = 0
+g.nvim_tree_add_trailing = 1 -- append a trailing slash to folder names
+g.nvim_tree_indent_markers = 1
+g.nvim_tree_quit_on_open = 0
+g.nvim_tree_git_hl = 1
+g.nvim_tree_group_empty = 1
+g.nvim_tree_disable_window_picker = 1
+g.nvim_tree_icon_padding = " "
+g.nvim_tree_symlink_arrow = " >> "
+g.nvim_tree_respect_buf_cwd = 1
+g.nvim_tree_create_in_closed_folder = 0
+g.nvim_tree_refresh_wait = 500
+g.nvim_tree_root_folder_modifier = table.concat {":t:gs?$?/..", string.rep(" ", 1000), "?:gs?^??"}
+g.nvim_tree_window_picker_exclude = {
+    filetype = {"packer", "qf"},
+    buftype = {"terminal"}
+}
+g.nvim_tree_special_files = {
+    -- ["README.md"] = 1,
+    ["Makefile"] = 1,
+    ["MAKEFILE"] = 1
+}
+g.nvim_tree_show_icons = {
+    -- folder_arrows = 1,
+    git = 1,
+    folders = 1,
+    files = 1
+}
+g.nvim_tree_icons = {
+    default = "", -- ""
+    symlink = "",
+    git = {
+        unstaged = "✗",
+        staged = "✓",
+        unmerged = "",
+        renamed = "➜",
+        untracked = "★",
+        deleted = "",
+        ignored = "◌"
+    },
+    folder = {
+        arrow_open = "",
+        arrow_closed = "",
+        default = "",
+        open = "",
+        empty = "",
+        empty_open = "",
+        symlink = "",
+        symlink_open = ""
     }
 }

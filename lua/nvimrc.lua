@@ -131,7 +131,10 @@ M.mappings.plugin = {
         find_hiddenfiles = "fh",
         help_tags = "ft",
         live_grep = "fg",
-        oldfiles = "fo"
+        oldfiles = "fo",
+        -- Pick colorscheme
+        colorscheme = "<leader>c",
+        command_history = "<C-c>"
     }
 }
 

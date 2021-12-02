@@ -5,13 +5,13 @@
 --     local function buf_set_option(...)
 --         vim.api.nvim_buf_set_option(bufnr, ...)
 --     end
--- 
+--
 --     -- Enable completion triggered by <c-x><c-o>
 --     buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
--- 
+--
 --     -- Mappings.
 --     local opts = {noremap = true, silent = true}
--- 
+--
 --     -- See `:help vim.lsp.*` for documentation on any of the below functions
 --     buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 --     buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
@@ -32,16 +32,16 @@
 --     buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 --     buf_set_keymap("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 --     buf_set_keymap("v", "<space>ca", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
--- 
+--
 --     -- Rust tools replacement
 --     buf_set_keymap("n", "K", "<cmd>RustHoverActions<CR>", opts)
 --     buf_set_keymap("v", "K", "<cmd>RustHoverRange<CR>", opts)
--- 
+--
 --     vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 -- end
--- 
+--
 -- local capabilities = require("plugins.configs.lsp_servers.capabilities")
--- 
+--
 -- require("lspconfig").rls.setup {
 --     on_attach = on_attach,
 --     capabilities = capabilities,

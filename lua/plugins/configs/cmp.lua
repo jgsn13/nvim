@@ -93,7 +93,8 @@ cmp.setup.cmdline(
     "/",
     {
         sources = {
-            {name = "buffer"}
+            {name = "buffer"},
+            {name = "path"}
         }
     }
 )
@@ -103,9 +104,7 @@ cmp.setup.cmdline(
     {
         sources = cmp.config.sources(
             {
-                {name = "path"},
-                {name = "emoji"},
-                {name = "buffer"}
+                {name = "path"}
             },
             {
                 {name = "cmdline"}

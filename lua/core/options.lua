@@ -26,7 +26,7 @@ opt.encoding = "utf-8"
 opt.clipboard = options.clipboard
 opt.cmdheight = options.cmdheight
 opt.cul = true -- cursor line
-cmd [[set guicursor=]]
+g.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50"
 
 -- Indentline
 opt.expandtab = options.expandtab

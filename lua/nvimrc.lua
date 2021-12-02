@@ -129,8 +129,7 @@ M.mappings.plugin = {
         live_grep = "fg",
         oldfiles = "fo",
         -- Pick colorscheme
-        colorscheme = "<leader>c",
-        command_history = "<C-c>"
+        colorscheme = "<leader>c"
     }
 }
 

@@ -99,7 +99,7 @@ M.misc = function()
         -- Buffer stuff
         map("n", maps.close_buffer, ":lua require('core.utils').close_buffer() <CR>") -- close  buffer
         map("n", maps.copy_whole_file, ":%y+ <CR>") -- copy whole file content
-        -- map("n", maps.cmd_history, ":<C-f>") -- see cmd history
+        map("n", maps.cmd_history, ":<C-f>") -- see cmd history
         map("n", maps.new_buffer, ":enew <CR>") -- new buffer
         map("n", maps.new_tab, ":tabnew <CR>") -- new tabs
         map("n", maps.line_number_toggle, ":set nu! <CR>") -- toggle numbers
@@ -197,7 +197,6 @@ M.telescope = function()
     map("n", m.live_grep, ":Telescope live_grep <CR>")
     map("n", m.oldfiles, ":Telescope oldfiles <CR>")
     map("n", m.colorscheme, ":Telescope colorscheme <CR>")
-    map("n", m.command_history, ":Telescope command_history <CR>")
 end
 
 return M

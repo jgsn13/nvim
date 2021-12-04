@@ -26,7 +26,7 @@ icons.setup {
             name = "css"
         },
         ts = {
-            icon = "",
+            icon = "ﯤ", -- "",
             color = "#0288D1",
             name = "typescript"
         },

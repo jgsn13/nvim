@@ -56,8 +56,7 @@ M.plugin_status = {
     lualine = true, -- statusline
     gitsigns = true, -- gitsigns in statusline
     formatter = true, -- universal formatter
-    project = true,
-    fterm = true
+    project = true
 }
 
 -- mappings -- don't use a single keymap twice --
@@ -113,10 +112,6 @@ M.mappings.plugin = {
         toggle = "<C-n>", -- file manager
         focus = "<leader>e",
         refresh = "<leader>R"
-    },
-    fterm = {
-        toggle = "<A-t>",
-        lazygit_toggle = "<A-g>"
     },
     project = {
         projects = "<C-p>"

@@ -174,15 +174,6 @@ M.nvimtree = function()
     map("n", plugin_maps.nvimtree.refresh, ":NvimTreeRefresh <CR>")
 end
 
-M.fterm = function()
-    local m = plugin_maps.fterm
-
-    map("n", m.toggle, ':lua require("FTerm").toggle()<CR>')
-    map("t", m.toggle, '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
-    map("n", m.lazygit_toggle, ':lua require("FTerm").lazygit()<CR>')
-    map("t", m.lazygit_toggle, '<C-\\><C-n><CMD>lua require("FTerm").lazygit()<CR>')
-end
-
 M.project = function()
     map("n", plugin_maps.project.projects, ":Telescope projects<CR>")
 end

@@ -289,18 +289,6 @@ return require("packer").startup(
                 run = "make"
             }
 
-            use {
-                "numtostr/FTerm.nvim",
-                disable = not plugin_status.fterm,
-                requires = "nvim-telescope/telescope.nvim",
-                config = function()
-                    require "plugins.configs.fterm"
-                end,
-                setup = function()
-                    require("core.mappings").fterm()
-                end
-            }
-
             -- Automatically set up your configuration after cloning packer.nvim
             -- Put this at the end after all plugins
             if packer_bootstrap then

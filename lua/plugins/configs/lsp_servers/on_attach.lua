@@ -50,6 +50,18 @@ local function on_attach(_, bufnr)
     -- buf_set_keymap("n", "<A-]>", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>", opts)
 
     vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
+
+    require "lsp_signature".on_attach(
+        {
+            bind = true, -- This is mandatory, otherwise border config won't get registered.
+            floating_window = false,
+            shadow_guibg = "Black",
+            handler_opts = {
+                border = "single"
+            }
+        },
+        bufnr
+    )
 end
 
 return on_attach

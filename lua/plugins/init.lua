@@ -132,6 +132,11 @@ return require("packer").startup(
                 end
             }
 
+            use {
+                "ray-x/lsp_signature.nvim",
+                after = "nvim-lspconfig"
+            }
+
             -- load luasnips + cmp related in insert mode only
 
             use {

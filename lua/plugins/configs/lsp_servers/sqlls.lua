@@ -6,6 +6,7 @@ require "lspconfig".sqlls.setup {
     filetypes = {"sql", "mysql", "sqlite"},
     on_attach = on_attach,
     capabilities = capabilities,
+    root_dir = require "lspconfig".util.root_pattern("") or vim.fn.getcwd(),
     flags = {
         debounce_text_changes = 150
     }

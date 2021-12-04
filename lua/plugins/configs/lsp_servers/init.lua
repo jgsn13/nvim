@@ -13,7 +13,7 @@ require("plugins.configs.lsp_servers.emmet")
 require("plugins.configs.lsp_servers.clangd")
 -- require("plugins.configs.lsp_servers.java")
 require("plugins.configs.lsp_servers.graphql")
-require("puginst.configs.lsp_servers.sqlls")
+require("plugins.configs.lsp_servers.sqlls")
 
 vim.api.nvim_exec(
     [[

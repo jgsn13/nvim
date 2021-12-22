@@ -1,11 +1,5 @@
-require("onedarkpro").load()
--- require("moonlight").set()
--- require("onedark").setup()
--- require("doom-one").setup()
--- require("calvera").set()
--- require("github-theme").setup()
--- require("catppuccin").setup()
--- require("onenord").setup()
+-- Load themes
+require("core.load_themes")
 
 local opt = vim.opt
 local g = vim.g
@@ -25,8 +19,13 @@ opt.backspace = "indent,eol,start"
 opt.encoding = "utf-8"
 opt.clipboard = options.clipboard
 opt.cmdheight = options.cmdheight
-opt.cul = true -- cursor line
+opt.cul = false -- cursor line
 g.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50"
+
+-- Folding
+opt.foldlevel = 1000
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- Indentline
 opt.expandtab = options.expandtab
@@ -78,7 +77,9 @@ vim.api.nvim_exec(
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
-opt.whichwrap:append "<>hl"
+opt.whichwrap:append "<>[]hl"
+
+cmd [[set iskeyword+=-]]
 
 g.mapleader = options.mapleader
 

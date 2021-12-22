@@ -94,7 +94,8 @@ M.mappings = {
         -- below three are for spawning terminals
         new_horizontal = "<leader>h",
         new_vertical = "<leader>v",
-        new_window = "<leader>w"
+        new_window = "<leader>w",
+        lazygit = "<leader>g"
     }
 }
 

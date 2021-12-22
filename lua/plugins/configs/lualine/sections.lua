@@ -148,6 +148,19 @@ M.y = {
 
 M.z = {
     {
+        "fileformat",
+        symbols = {
+            unix = "",
+            dos = "",
+            mac = "" -- e711
+        },
+        cond = conditions.simple,
+        padding = {
+            left = 0,
+            right = 1
+        }
+    },
+    {
         function()
             local function format_file_size(file)
                 local size = vim.fn.getfsize(file)
@@ -176,37 +189,24 @@ M.z = {
             left = 0,
             right = 1
         }
-    },
-    {
-        "fileformat",
-        symbols = {
-            unix = "",
-            dos = "",
-            mac = "" -- e711
-        },
-        cond = conditions.simple,
-        padding = {
-            left = 0,
-            right = 1
-        }
-    },
-    {
-        function()
-            local current_line = vim.fn.line "."
-            local total_lines = vim.fn.line "$"
-            local chars = {"_", "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"}
-            local line_ratio = current_line / total_lines
-            local index = math.ceil(line_ratio * #chars)
-            return chars[index]
-        end,
-        padding = {
-            right = 0
-        },
-        color = {
-            fg = colors.yellow
-        },
-        cond = conditions.nvimtree
     }
+    -- {
+    --     function()
+    --         local current_line = vim.fn.line "."
+    --         local total_lines = vim.fn.line "$"
+    --         local chars = {"_", "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"}
+    --         local line_ratio = current_line / total_lines
+    --         local index = math.ceil(line_ratio * #chars)
+    --         return chars[index]
+    --     end,
+    --     padding = {
+    --         right = 0
+    --     },
+    --     color = {
+    --         fg = colors.yellow
+    --     },
+    --     cond = conditions.nvimtree
+    -- }
 }
 
 return M

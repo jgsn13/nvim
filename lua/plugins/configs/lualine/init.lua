@@ -1,5 +1,4 @@
 vim.o.laststatus = 2
-vim.o.showmode = false
 
 local theme = require("plugins.configs.lualine.theme")
 

@@ -6,9 +6,24 @@ local M = {}
 
 M.a = {
     {
-        "mode",
+        function()
+            return "█"
+        end,
         color = {
-            gui = "bold"
+            fg = colors.dark_purple
+        },
+        padding = {
+            left = 0,
+            right = 1
+        }
+    },
+    {
+        function()
+            return ""
+        end,
+        padding = {
+            left = 0,
+            right = 0
         }
     }
 }
@@ -187,7 +202,7 @@ M.z = {
         },
         padding = {
             left = 0,
-            right = 1
+            right = 0
         }
     }
     -- {

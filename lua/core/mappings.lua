@@ -40,12 +40,11 @@ M.misc = function()
         map("", "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', {expr = true})
         map("", "<Down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', {expr = true})
         map("", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', {expr = true})
-
-        -- use ESC to turn off search highlighting
-        map("n", "<Esc>", ":noh <CR>")
     end
 
     local function optional_mappings()
+        -- Treesitter mappings
+        map("n", "<C-r>", ":TSBufToggle rainbow<CR>")
     end
 
     local function required_mappings()
@@ -79,9 +78,9 @@ M.misc = function()
 
         -- Open and close fold
         map("n", "<C-h>", ":foldclose<CR>")
-        map("n", "<C-l>", ":foldopen<CR>")
-        map("v", "<C-h>", ":foldclose<CR>")
-        map("v", "<C-l>", ":foldopen<CR>")
+        map("n", "<C-o>", ":foldopen<CR>")
+        map("v", "<C-h>", "<cmd>foldclose<CR><Esc>")
+        map("v", "<C-o>", "<cmd>foldopen<CR><Esc>")
 
         -- Display search result in center of the screen
         map("n", "n", "nzz")
@@ -125,6 +124,7 @@ M.misc = function()
         )
         map("n", term_maps.new_vertical, ":execute 'vnew +terminal' | let b:term_type = 'vert' | startinsert <CR>")
         map("n", term_maps.new_window, ":execute 'terminal' | let b:term_type = 'wind' | startinsert <CR>")
+        map("n", term_maps.lazygit, ":execute 'terminal lazygit' | let b:term_type = 'wind' | startinsert <CR>")
         -- terminal mappings end --
 
         -- Add Packer commands because we are not loading it at startup

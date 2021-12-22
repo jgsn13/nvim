@@ -1,6 +1,7 @@
 return {
     white = "#abb2bf",
-    darker_black = "#1b1f27",
+    -- darker_black = "#1b1f27",
+    darker_black = "NONE",
     black = "#1e222a", --  nvim bg
     black2 = "#252931",
     one_bg = "#282c34", -- real bg of onedark

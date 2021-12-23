@@ -61,10 +61,6 @@ M.b = {
         color = {
             fg = colors.purple
         },
-        padding = {
-            left = 0,
-            right = 1
-        },
         cond = conditions.simple
     }
 }

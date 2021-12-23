@@ -94,10 +94,14 @@ return require("packer").startup(
 
             use {
                 "nvim-treesitter/nvim-treesitter",
-                event = "BufRead",
+                -- event = "BufRead",
                 config = function()
                     require "plugins.configs.treesitter"
                 end
+            }
+
+            use {
+                "nvim-orgmode/orgmode"
             }
 
             use {
@@ -153,6 +157,11 @@ return require("packer").startup(
 
             use {
                 "ray-x/lsp_signature.nvim",
+                after = "nvim-lspconfig"
+            }
+
+            use {
+                "jose-elias-alvarez/nvim-lsp-ts-utils",
                 after = "nvim-lspconfig"
             }
 

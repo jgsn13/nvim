@@ -29,7 +29,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
         },
         signs = true,
         underline = true,
-        update_in_insert = false -- update diagnostics insert mode
+        update_in_insert = true
     }
 )
 vim.lsp.handlers["textDocument/hover"] =

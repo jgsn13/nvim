@@ -78,9 +78,9 @@ M.misc = function()
 
         -- Open and close fold
         map("n", "<C-h>", ":foldclose<CR>")
-        map("n", "<C-o>", ":foldopen<CR>")
+        map("n", "<C-f>", ":foldopen<CR>")
         map("v", "<C-h>", "<cmd>foldclose<CR><Esc>")
-        map("v", "<C-o>", "<cmd>foldopen<CR><Esc>")
+        map("v", "<C-f>", "<cmd>foldopen<CR><Esc>")
 
         -- Display search result in center of the screen
         map("n", "n", "nzz")

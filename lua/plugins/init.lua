@@ -161,8 +161,7 @@ return require("packer").startup(
             }
 
             use {
-                "jose-elias-alvarez/nvim-lsp-ts-utils",
-                after = "nvim-lspconfig"
+                "jose-elias-alvarez/nvim-lsp-ts-utils"
             }
 
             -- load luasnips + cmp related in insert mode only

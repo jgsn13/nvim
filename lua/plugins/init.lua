@@ -34,6 +34,7 @@ return require("packer").startup(
             -- Colorschemes
             use "olimorris/onedarkpro.nvim"
             use "navarasu/onedark.nvim"
+            use "Mofiqul/dracula.nvim"
             use "NTBBloodbath/doom-one.nvim"
             use "yashguptaz/calvera-dark.nvim"
             use "shaunsingh/moonlight.nvim"
@@ -97,6 +98,24 @@ return require("packer").startup(
                 config = function()
                     require "plugins.configs.treesitter"
                 end
+            }
+
+            use {
+                "windwp/nvim-ts-autotag",
+                after = "nvim-treesitter",
+                event = "BufRead"
+            }
+
+            use {
+                "p00f/nvim-ts-rainbow",
+                after = "nvim-treesitter",
+                event = "BufRead"
+            }
+
+            use {
+                "nvim-treesitter/nvim-treesitter-angular",
+                after = "nvim-treesitter",
+                event = "BufRead"
             }
 
             -- git stuff

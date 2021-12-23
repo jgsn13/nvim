@@ -81,7 +81,8 @@ cmp.setup {
             {name = "nvim_lsp"},
             {name = "luasnip"},
             {name = "path"},
-            {name = "emoji"}
+            {name = "emoji"},
+            {name = "orgmode"}
         },
         {
             {name = "buffer"}

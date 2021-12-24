@@ -73,7 +73,7 @@ local function on_attach(client, bufnr)
             filter_out_diagnostics_by_severity = {},
             filter_out_diagnostics_by_code = {},
             -- inlay hints
-            auto_inlay_hints = true,
+            auto_inlay_hints = false,
             inlay_hints_highlight = "Comment",
             -- update imports on file move
             update_imports_on_move = false,

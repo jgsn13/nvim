@@ -22,7 +22,37 @@ M.a = {
             return ""
         end,
         padding = {
-            left = 0,
+            left = 0
+        }
+    },
+    {
+        function()
+            local function format_file_size(file)
+                local size = vim.fn.getfsize(file)
+                if size <= 0 then
+                    return ""
+                end
+                local sufixes = {"b", "k", "m", "g"}
+                local i = 1
+                while size > 1024 do
+                    size = size / 1024
+                    i = i + 1
+                end
+                return string.format("%.1f%s", size, sufixes[i])
+            end
+            local file = vim.fn.expand("%:p")
+            if string.len(file) == 0 then
+                return ""
+            end
+            return format_file_size(file)
+            -- return format_file_size(file) .. " "
+        end,
+        condition = conditions.simple,
+        color = {
+            fg = colors.blue
+        },
+        padding = {
+            left = 1,
             right = 0
         }
     }
@@ -168,36 +198,9 @@ M.z = {
         },
         cond = conditions.git,
         padding = {
-            left = 0
+            left = 0,
+            right = 1
         }
-    },
-    {
-        function()
-            local function format_file_size(file)
-                local size = vim.fn.getfsize(file)
-                if size <= 0 then
-                    return ""
-                end
-                local sufixes = {"b", "k", "m", "g"}
-                local i = 1
-                while size > 1024 do
-                    size = size / 1024
-                    i = i + 1
-                end
-                return string.format("%.1f%s", size, sufixes[i])
-            end
-            local file = vim.fn.expand("%:p")
-            if string.len(file) == 0 then
-                return ""
-            end
-            return format_file_size(file) .. " "
-        end,
-        condition = conditions.simple,
-        color = {
-            fg = colors.blue
-        },
-        left_padding = 0,
-        right_padding = 1
     }
 }
 

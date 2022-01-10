@@ -14,14 +14,6 @@ vim.cmd([[ autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'nvimtree') | 
 -- Open a file from its last left off position
 vim.cmd [[ au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif ]]
 
--- File extension specific tabbing
-vim.cmd [[ autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4 ]]
-vim.cmd [[ autocmd Filetype typescript setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2 ]]
-vim.cmd [[ autocmd Filetype typescriptreact setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2 ]]
-vim.cmd [[ autocmd Filetype javascript setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2 ]]
-vim.cmd [[ autocmd Filetype javascriptreact setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2 ]]
-vim.cmd [[ autocmd Filetype json setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2 ]]
-
 -- Remove statusline in NvimTree
 vim.api.nvim_exec(
     [[

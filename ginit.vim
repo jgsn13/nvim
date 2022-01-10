@@ -1,30 +1,31 @@
 " Enable Mouse
 set mouse=a
 
-colorscheme onedark
+" Window Opacity
+GuiWindowOpacity 0.95
 
 " Disable GUI Tabline
-"GuiTabline 0
+GuiTabline 0
 
 " Disable GUI Popupmenu
-"GuiPopupmenu 0
+GuiPopupmenu 0
 
 " Disable GUI ScrollBar
-"GuiScrollBar 0
+GuiScrollBar 0
 
 set guifont=FiraCode\ NF:h10
 set guifontwide=Noto\ Color\ Emoji
 
-" let s:fontsize = 10
-" function! AdjustFontSize(amount)
-"   let s:fontsize = s:fontsize+a:amount
-"   execute join(['set guifont=', 'FiraCode', '\ NF:h', s:fontsize], '')
-" endfunction
+let s:fontsize = 10
+function! AdjustFontSize(amount)
+  let s:fontsize = s:fontsize+a:amount
+  execute join(['set guifont=', 'FiraCode', '\ NF:h', s:fontsize], '')
+endfunction
 
-" noremap <C-=> :call AdjustFontSize(1)<CR>
-" noremap <C--> :call AdjustFontSize(-1)<CR>
-" inoremap <C-=> <Esc>:call AdjustFontSize(1)<CR>a
-" inoremap <C--> <Esc>:call AdjustFontSize(-1)<CR>a
+noremap <silent><C-=> :call AdjustFontSize(1)<CR>
+noremap <silent><C--> :call AdjustFontSize(-1)<CR>
+inoremap <silent><C-=> <Esc>:call AdjustFontSize(1)<CR>a
+inoremap <silent><C--> <Esc>:call AdjustFontSize(-1)<CR>a
 
 " Right Click Context Menu (Copy-Cut-Paste)
 "nnoremap <silent><RightMouse> :call GuiShowContextMenu()<CR>

@@ -28,6 +28,9 @@ ts_config.setup {
         "css",
         "html",
         "json",
+        "fish",
+        "yaml",
+        "toml",
         "org"
     },
     autotag = {

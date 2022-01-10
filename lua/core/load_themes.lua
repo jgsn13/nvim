@@ -1,13 +1,13 @@
 function load_themes()
-    require("doom-one").setup(
-        {
-            cursor_coloring = false,
-            terminal_colors = true,
-            italic_comments = true,
-            enable_treesitter = true,
-            transparent_background = false
-        }
-    )
+    -- require("doom-one").setup(
+    --     {
+    --         cursor_coloring = false,
+    --         terminal_colors = true,
+    --         italic_comments = true,
+    --         enable_treesitter = true,
+    --         transparent_background = false
+    --     }
+    -- )
 
     local onedarkpro = require("onedarkpro")
     require("onedarkpro").setup(

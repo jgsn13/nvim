@@ -45,6 +45,7 @@ M.misc = function()
     local function optional_mappings()
         -- Treesitter mappings
         map("n", "<C-r>", ":TSBufToggle rainbow<CR>")
+        map("n", "<Leader>sv", ":source %<CR>")
     end
 
     local function required_mappings()

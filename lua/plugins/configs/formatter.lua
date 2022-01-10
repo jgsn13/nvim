@@ -108,12 +108,12 @@ require("formatter").setup(
                 -- autopep8
                 function()
                     return {
-                        exe = "autopep8",
-                        args = {"--in-place", vim.api.nvim_buf_get_name(0)},
+                        exe = "python",
+                        args = {"-m", "black", vim.api.nvim_buf_get_name(0)},
                         stdin = false
                     }
                 end
-            },
+            }
         }
     }
 )

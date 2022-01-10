@@ -32,7 +32,6 @@ return require("packer").startup(
             use "wbthomason/packer.nvim"
 
             -- Colorschemes
-            use "olimorris/onedarkpro.nvim"
             use "navarasu/onedark.nvim"
             use "Mofiqul/dracula.nvim"
             use "NTBBloodbath/doom-one.nvim"

@@ -9,36 +9,17 @@ function load_themes()
     --     }
     -- )
 
-    local onedarkpro = require("onedarkpro")
-    require("onedarkpro").setup(
-        {
-            styles = {
-                strings = "NONE",
-                comments = "italic",
-                keywords = "NONE",
-                functions = "italic,bold",
-                variables = "NONE"
-            },
-            options = {
-                bold = true,
-                italic = true,
-                underline = true,
-                undercurl = true,
-                cursorline = true,
-                transparency = true,
-                terminal_colors = false,
-                window_unfocussed_color = false
-            }
-        }
-    )
-    onedarkpro.load()
-
     -- fix NvimTreeNormalNC when transparency is activated
     vim.cmd [[highlight NvimTreeNormalNC guibg=NONE]]
 
     -- vim.cmd[[colorscheme dracula]]
     -- require("moonlight").set()
-    -- require("onedark").setup()
+    require("onedark").setup {
+        style = "cool",
+        toggle_style_key = "<leader>ts", -- Default keybinding to toggle
+        toggle_style_list = {"dark", "darker", "cool", "deep", "warm", "warmer", "light"} -- List of styles to toggle between
+    }
+    require("onedark").load()
     -- require("calvera").set()
     -- require("github-theme").setup()
     -- require("catppuccin").setup()

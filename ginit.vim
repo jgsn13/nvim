@@ -4,6 +4,9 @@ set mouse=a
 " Window Opacity
 GuiWindowOpacity 0.95
 
+" Font Ligatures
+GuiRenderLigatures 1
+
 " Disable GUI Tabline
 GuiTabline 0
 

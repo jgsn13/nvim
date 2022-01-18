@@ -36,7 +36,8 @@ opt.smartindent = options.smartindent
 opt.fillchars = {eob = " "}
 
 wo.list = true
-opt.listchars = "tab:→ ,trail:•,nbsp:≡,extends:»,precedes:«,eol:↴,space:⋅"
+-- opt.listchars = "tab:→ ,trail:•,nbsp:≡,extends:»,precedes:«,eol:↴,space:⋅"
+opt.listchars = ""
 
 opt.ignorecase = options.ignorecase
 opt.mouse = options.mouse

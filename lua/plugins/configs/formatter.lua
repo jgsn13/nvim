@@ -105,7 +105,7 @@ require("formatter").setup(
                 end
             },
             python = {
-                -- autopep8
+                -- black or autopep8
                 function()
                     return {
                         exe = "python",
@@ -119,12 +119,9 @@ require("formatter").setup(
 )
 
 -- Format on save
-vim.api.nvim_exec(
-    [[
+vim.api.nvim_exec([[
 augroup FormatAutogroup
   autocmd!
   autocmd BufWritePost *.html,*.css,*.scss,*.sass,*.js,*.ts,*.rs,*.lua,*.cpp,*.c,*.py FormatWrite
 augroup END
-]],
-    true
-)
+]], true)

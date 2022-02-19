@@ -33,13 +33,7 @@ return require("packer").startup(
 
             -- Colorschemes
             use "navarasu/onedark.nvim"
-            use "Mofiqul/dracula.nvim"
-            use "NTBBloodbath/doom-one.nvim"
-            use "yashguptaz/calvera-dark.nvim"
-            use "shaunsingh/moonlight.nvim"
-            use "projekt0n/github-nvim-theme"
-            use "catppuccin/nvim"
-            use "rmehri01/onenord.nvim"
+            use "olimorris/onedarkpro.nvim"
 
             use {
                 "nvim-lua/plenary.nvim"
@@ -100,10 +94,6 @@ return require("packer").startup(
             }
 
             use {
-                "nvim-orgmode/orgmode"
-            }
-
-            use {
                 "windwp/nvim-ts-autotag",
                 after = "nvim-treesitter",
                 event = "BufRead"
@@ -155,12 +145,17 @@ return require("packer").startup(
             }
 
             use {
-                "ray-x/lsp_signature.nvim",
-                after = "nvim-lspconfig"
+                "williamboman/nvim-lsp-installer",
+                config = function()
+                    require "plugins.configs.lspinstaller"
+                end
             }
 
             use {
-                "jose-elias-alvarez/nvim-lsp-ts-utils"
+                "j-hui/fidget.nvim",
+                config = function()
+                    require "fidget".setup {}
+                end
             }
 
             -- load luasnips + cmp related in insert mode only
@@ -176,11 +171,6 @@ return require("packer").startup(
                 config = function()
                     require "plugins.configs.cmp"
                 end
-            }
-
-            use {
-                "aca/emmet-ls",
-                after = "nvim-cmp"
             }
 
             use {
@@ -231,8 +221,6 @@ return require("packer").startup(
                 "hrsh7th/cmp-cmdline",
                 after = "cmp-calc"
             }
-
-            use "mfussenegger/nvim-jdtls"
 
             use "simrat39/rust-tools.nvim"
 

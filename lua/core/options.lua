@@ -35,9 +35,8 @@ opt.smartindent = options.smartindent
 -- disable tilde on end of buffer: https://github.com/  neovim/neovim/pull/8546#issuecomment-643643758
 opt.fillchars = {eob = " "}
 
-wo.list = true
--- opt.listchars = "tab:→ ,trail:•,nbsp:≡,extends:»,precedes:«,eol:↴,space:⋅"
-opt.listchars = ""
+--wo.list = true
+--opt.listchars = "tab:→ ,trail:•,nbsp:≡,extends:»,precedes:«,eol:↴,space:⋅"
 
 opt.ignorecase = options.ignorecase
 opt.mouse = options.mouse
@@ -64,6 +63,8 @@ opt.undofile = options.permanent_undo
 
 -- interval for writing swap file to disk, also used by gitsigns
 opt.updatetime = options.updatetime
+
+opt.swapfile = false
 
 -- Highlight on yank
 vim.api.nvim_exec(
@@ -109,3 +110,7 @@ local disabled_built_ins = {
 for _, plugin in pairs(disabled_built_ins) do
     g["loaded_" .. plugin] = 1
 end
+
+-- Options for GUI
+cmd [[set guifont=FiraCode\ NF:h12]]
+cmd [[set guifontwide=Noto\ Color\ Emoji]]

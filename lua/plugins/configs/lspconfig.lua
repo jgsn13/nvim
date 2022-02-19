@@ -5,7 +5,8 @@ if not present1 then
 end
 
 -- Start servers
-require("plugins.configs.lsp_servers")
+-- require("plugins.configs.lsp_servers")
+-- require "plugins.configs.lspinstaller"
 
 -- require("anyfile").setup_luaLsp(on_attach, capabilities) -- this will be removed soon after the custom hooks PR
 

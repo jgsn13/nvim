@@ -20,7 +20,8 @@ opt.encoding = "utf-8"
 opt.clipboard = options.clipboard
 opt.cmdheight = options.cmdheight
 opt.cul = false -- cursor line
-g.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50"
+-- g.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50"
+g.guicursor = ""
 
 -- Folding
 opt.foldlevel = 1000
@@ -112,5 +113,5 @@ for _, plugin in pairs(disabled_built_ins) do
 end
 
 -- Options for GUI
-cmd [[set guifont=FiraCode\ NF:h12]]
+cmd [[set guifont=FiraCode\ NF:h11]]
 cmd [[set guifontwide=Noto\ Color\ Emoji]]

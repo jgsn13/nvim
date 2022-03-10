@@ -1,3 +1,12 @@
+-- Don't change terminal cursor shape
+vim.cmd
+[[
+    augroup change_cursor
+        au!
+        au ExitPre * :set guicursor=a:ver90
+    augroup END
+]] 
+
 local init_modules = {
     "core"
 }

@@ -7,7 +7,7 @@ require("formatter").setup(
                 function()
                     return {
                         exe = "prettier",
-                        args = {"--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
+                        args = {"--tab-width", "4", "--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
                         stdin = true
                     }
                 end
@@ -17,7 +17,7 @@ require("formatter").setup(
                 function()
                     return {
                         exe = "prettier",
-                        args = {"--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
+                        args = {"--tab-width", "4", "--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
                         stdin = true
                     }
                 end
@@ -27,7 +27,7 @@ require("formatter").setup(
                 function()
                     return {
                         exe = "prettier",
-                        args = {"--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
+                        args = {"--tab-width", "4", "--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
                         stdin = true
                     }
                 end
@@ -37,7 +37,7 @@ require("formatter").setup(
                 function()
                     return {
                         exe = "prettier",
-                        args = {"--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
+                        args = {"--tab-width", "4", "--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
                         stdin = true
                     }
                 end
@@ -108,8 +108,8 @@ require("formatter").setup(
                 -- black or autopep8
                 function()
                     return {
-                        exe = "python",
-                        args = {"-m", "black", vim.api.nvim_buf_get_name(0)},
+                        exe = "black",
+                        args = {vim.api.nvim_buf_get_name(0)},
                         stdin = false
                     }
                 end

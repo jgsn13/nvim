@@ -17,7 +17,7 @@ GuiPopupmenu 0
 " Disable GUI ScrollBar
 GuiScrollBar 0
 
-"set guifont=FiraCode\ NF:h12
+"set guifont=FiraCode\ NF:h11
 "set guifontwide=Noto\ Color\ Emoji
 
 " Paste with <Shift> + <Insert>

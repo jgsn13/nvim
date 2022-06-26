@@ -7,7 +7,12 @@ require("formatter").setup(
                 function()
                     return {
                         exe = "prettier",
-                        args = {"--tab-width", "4", "--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
+                        args = {
+                            "--tab-width",
+                            "4",
+                            "--stdin-filepath",
+                            vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))
+                        },
                         stdin = true
                     }
                 end
@@ -17,7 +22,12 @@ require("formatter").setup(
                 function()
                     return {
                         exe = "prettier",
-                        args = {"--tab-width", "4", "--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
+                        args = {
+                            "--tab-width",
+                            "4",
+                            "--stdin-filepath",
+                            vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))
+                        },
                         stdin = true
                     }
                 end
@@ -27,7 +37,12 @@ require("formatter").setup(
                 function()
                     return {
                         exe = "prettier",
-                        args = {"--tab-width", "4", "--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
+                        args = {
+                            "--tab-width",
+                            "4",
+                            "--stdin-filepath",
+                            vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))
+                        },
                         stdin = true
                     }
                 end
@@ -37,7 +52,12 @@ require("formatter").setup(
                 function()
                     return {
                         exe = "prettier",
-                        args = {"--tab-width", "4", "--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
+                        args = {
+                            "--tab-width",
+                            "4",
+                            "--stdin-filepath",
+                            vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))
+                        },
                         stdin = true
                     }
                 end
@@ -47,7 +67,29 @@ require("formatter").setup(
                 function()
                     return {
                         exe = "prettier",
-                        args = {"--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)), "--single-quote"},
+                        args = {
+                            "--single-quote",
+                            "--trailing-comma",
+                            "es5",
+                            "--stdin-filepath",
+                            vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))
+                        },
+                        stdin = true
+                    }
+                end
+            },
+            javascriptreact = {
+                -- prettier
+                function()
+                    return {
+                        exe = "prettier",
+                        args = {
+                            "--single-quote",
+                            "--trailing-comma",
+                            "es5",
+                            "--stdin-filepath",
+                            vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))
+                        },
                         stdin = true
                     }
                 end
@@ -57,7 +99,63 @@ require("formatter").setup(
                 function()
                     return {
                         exe = "prettier",
-                        args = {"--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)), "--single-quote"},
+                        args = {
+                            "--single-quote",
+                            "--trailing-comma",
+                            "es5",
+                            "--stdin-filepath",
+                            vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))
+                        },
+                        stdin = true
+                    }
+                end
+            },
+            typescriptreact = {
+                -- prettier
+                function()
+                    return {
+                        exe = "prettier",
+                        args = {
+                            "--single-quote",
+                            "--trailing-comma",
+                            "es5",
+                            "--stdin-filepath",
+                            vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))
+                        },
+                        stdin = true
+                    }
+                end
+            },
+            php = {
+                -- prettier
+                function()
+                    return {
+                        exe = "prettier",
+                        args = {
+                            "--tab-width",
+                            "4",
+                            "--double-quote",
+                            "--trailing-comma",
+                            "all",
+                            "--stdin-filepath",
+                            vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))
+                        },
+                        stdin = true
+                    }
+                end
+            },
+            vue = {
+                -- prettier
+                function()
+                    return {
+                        exe = "prettier",
+                        args = {
+                            "--single-quote",
+                            "--trailing-comma",
+                            "es5",
+                            "--stdin-filepath",
+                            vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))
+                        },
                         stdin = true
                     }
                 end
@@ -119,9 +217,12 @@ require("formatter").setup(
 )
 
 -- Format on save
-vim.api.nvim_exec([[
+vim.api.nvim_exec(
+    [[
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePost *.html,*.css,*.scss,*.sass,*.js,*.ts,*.rs,*.lua,*.cpp,*.c,*.py FormatWrite
+  autocmd BufWritePost *.html,*.css,*.scss,*.sass,*.js,*.jsx,*.ts,*.tsx,*.php,*.rs,*.lua,*.cpp,*.c,*.py FormatWrite
 augroup END
-]], true)
+]],
+    true
+)

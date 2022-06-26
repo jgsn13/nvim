@@ -113,5 +113,5 @@ for _, plugin in pairs(disabled_built_ins) do
 end
 
 -- Options for GUI
-cmd [[set guifont=FiraCode\ NF:h11]]
+cmd [[set guifont=FiraCode\ NF:h10]]
 cmd [[set guifontwide=Noto\ Color\ Emoji]]

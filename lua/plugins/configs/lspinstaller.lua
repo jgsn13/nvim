@@ -57,6 +57,11 @@ lsp_installer.on_server_ready(
             opts.root_dir = require "lspconfig".util.root_pattern(".git") or vim.fn.getcwd()
         end
 
+        -- Php
+        if server.name == "intelephense" then
+            opts.root_dir = require "lspconfig".util.root_pattern(".git") or vim.fn.getcwd()
+        end
+
         -- Java
         if server.name == "jdtls" then
             opts.root_dir = function(fname)

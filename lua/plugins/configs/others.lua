@@ -4,17 +4,16 @@ local config = require("core.utils").load_config()
 
 M.autopairs = function()
     local present1, autopairs = pcall(require, "nvim-autopairs")
-    -- local present2, autopairs_completion = pcall(require, "nvim-autopairs.completion.cmp")
+    local present3, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
+    local present2, cmp = pcall(require, "cmp")
 
-    if not (present1 or present2) then
+    if not (present1 or present2 or present3) then
         return
     end
 
     autopairs.setup()
-    -- autopairs_completion.setup {
-    --     map_complete = true, -- insert () func completion
-    --     map_cr = true
-    -- }
+
+    cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 end
 
 M.blankline = function()
@@ -25,7 +24,7 @@ M.blankline = function()
         show_first_indent_level = false,
         use_treesitter = true,
         show_current_context = true,
-        buftype_exclude = {"terminal", "nofile"},
+        buftype_exclude = { "terminal", "nofile" },
         filetype_exclude = {
             "terminal",
             "[No Name]",
@@ -70,7 +69,7 @@ M.colorizer = function()
     local present, colorizer = pcall(require, "colorizer")
     if present then
         colorizer.setup(
-            {"*"},
+            { "*" },
             {
                 RGB = true, -- #RGB hex codes
                 RRGGBB = true, -- #RRGGBB hex codes

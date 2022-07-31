@@ -34,6 +34,8 @@ return require("packer").startup(
             -- Colorschemes
             use "navarasu/onedark.nvim"
             use "olimorris/onedarkpro.nvim"
+            use "projekt0n/github-nvim-theme"
+            use "Mofiqul/dracula.nvim"
 
             use {
                 "nvim-lua/plenary.nvim"

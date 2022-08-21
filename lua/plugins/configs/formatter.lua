@@ -72,6 +72,8 @@ require("formatter").setup(
                             "--trailing-comma",
                             "es5",
                             "--stdin-filepath",
+                            "--print-width",
+                            "80",
                             vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))
                         },
                         stdin = true
@@ -88,6 +90,8 @@ require("formatter").setup(
                             "--trailing-comma",
                             "es5",
                             "--stdin-filepath",
+                            "--print-width",
+                            "80",
                             vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))
                         },
                         stdin = true
@@ -100,6 +104,8 @@ require("formatter").setup(
                     return {
                         exe = "prettier",
                         args = {
+                            "--print-width",
+                            "80",
                             "--single-quote",
                             "--trailing-comma",
                             "es5",
@@ -120,6 +126,8 @@ require("formatter").setup(
                             "--trailing-comma",
                             "es5",
                             "--stdin-filepath",
+                            "--print-width",
+                            "80",
                             vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))
                         },
                         stdin = true
@@ -134,9 +142,6 @@ require("formatter").setup(
                         args = {
                             "--tab-width",
                             "4",
-                            "--double-quote",
-                            "--trailing-comma",
-                            "all",
                             "--stdin-filepath",
                             vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))
                         },
@@ -221,7 +226,7 @@ vim.api.nvim_exec(
     [[
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePost *.html,*.css,*.scss,*.sass,*.js,*.jsx,*.ts,*.tsx,*.php,*.rs,*.lua,*.cpp,*.c,*.py FormatWrite
+  autocmd BufWritePost *.html,*.css,*.scss,*.sass,*.js,*.jsx,*.tsx,*.rs,*.lua,*.cpp,*.c,*.py FormatWrite
 augroup END
 ]],
     true

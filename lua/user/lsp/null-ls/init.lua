@@ -18,7 +18,7 @@ null_ls.setup({
 		formatting.clang_format.with(formatting_settings.clang_format),
 		formatting.black.with(formatting_settings.black),
 		-- DIagnostics
-		diagnostics.eslint,
+		-- diagnostics.eslint,
 		diagnostics.flake8,
 	},
 })

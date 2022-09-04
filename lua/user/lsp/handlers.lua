@@ -164,7 +164,7 @@ end
 
 M.on_attach = function(client, bufnr)
 	local name = client.name
-	if name == "tsserver" or name == "sumneko_lua" then
+	if name == "tsserver" or name == "sumneko_lua" or name == "clangd" then
 		client.resolved_capabilities.document_formatting = false
 	end
 	lsp_keymaps(bufnr)

@@ -35,6 +35,11 @@ icons.setup {
             color = "#0288D1",
             name = "typescripttest"
         },
+        ["test.ts"] = {
+            icon = "",
+            color = "#0288D1",
+            name = "typescripttest"
+        },
         js = {
             icon = "",
             color = "#FFCA28",

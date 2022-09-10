@@ -51,10 +51,9 @@ return packer.startup(function(use)
 	use("akinsho/bufferline.nvim")
 	use("moll/vim-bbye")
 	use("nvim-lualine/lualine.nvim")
-	use("lukas-reineke/indent-blankline.nvim")
+	use({"lukas-reineke/indent-blankline.nvim", after = "nvim-treesitter"})
 
 	-- Colorschemes
-	-- use "lunarvim/colorschemes"
 	use("martinsione/darkplus.nvim")
 
 	-- cmp plugins

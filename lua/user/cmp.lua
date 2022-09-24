@@ -8,9 +8,10 @@ if not snip_status_ok then
 	return
 end
 
-local from_vscode_status_ok, from_vscode = pcall(require, "luasnip/loaders/from_vscode")
+local from_vscode_status_ok, from_vscode =
+	pcall(require, "luasnip/loaders/from_vscode")
 if not from_vscode_status_ok then
-    return
+	return
 end
 from_vscode.lazy_load()
 

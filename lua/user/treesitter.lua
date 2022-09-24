@@ -1,6 +1,6 @@
 local configs_status_ok, configs = pcall(require, "nvim-treesitter.configs")
 if not configs_status_ok then
-    return
+	return
 end
 
 configs.setup({

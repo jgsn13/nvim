@@ -47,11 +47,11 @@ nvim_tree.setup({
 		ignore = false,
 		timeout = 200,
 	},
-    filesystem_watchers = {
-        enable = true,
-    },
+	filesystem_watchers = {
+		enable = true,
+	},
 	view = {
-        adaptive_size = true,
+		adaptive_size = true,
 		width = 25,
 		hide_root_folder = true,
 		side = "left",
@@ -65,7 +65,7 @@ nvim_tree.setup({
 		},
 		number = false,
 		relativenumber = false,
-        signcolumn = "yes",
+		signcolumn = "yes",
 	},
 	actions = {
 		open_file = {
@@ -74,18 +74,17 @@ nvim_tree.setup({
 		},
 	},
 	renderer = {
-        highlight_git = true,
-        root_folder_modifier = ":t",
-
-        indent_markers = {
-            enable = false,
-            icons = {
-                corner = "└",
-                edge = "│",
-                item = "│",
-                none = " ",
-            },
-        },
+		highlight_git = true,
+		root_folder_modifier = ":t",
+		indent_markers = {
+			enable = false,
+			icons = {
+				corner = "└",
+				edge = "│",
+				item = "│",
+				none = " ",
+			},
+		},
 		icons = {
 			webdev_colors = true,
 			git_placement = "after",
@@ -101,15 +100,15 @@ nvim_tree.setup({
 				default = "",
 				symlink = "",
 				bookmark = "",
-                git = {
-                    unstaged = "",
-                    staged = "S",
-                    unmerged = "",
-                    renamed = "➜",
-                    deleted = "",
-                    untracked = "U",
-                    ignored = "◌",
-                },
+				git = {
+					unstaged = "",
+					staged = "S",
+					unmerged = "",
+					renamed = "➜",
+					deleted = "",
+					untracked = "U",
+					ignored = "◌",
+				},
 				folder = {
 					default = "",
 					open = "",
@@ -120,11 +119,11 @@ nvim_tree.setup({
 			},
 		},
 	},
-    filters = {
-        dotfiles = false,
-        custom = { "node_modules", "\\.cache" },
-        exclude = {},
-    },
+	filters = {
+		dotfiles = false,
+		custom = { "node_modules", "\\.cache" },
+		exclude = {},
+	},
 })
 
 -- Nvimtree toggle

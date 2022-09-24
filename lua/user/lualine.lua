@@ -33,13 +33,13 @@ local mode = {
 
 local lsp_client = function()
 	local icon = " "
-    local msg = icon .. "[inactive]"
+	local msg = icon .. "[inactive]"
 	local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
 	local clients = vim.lsp.get_active_clients()
 	if next(clients) == nil then
 		return msg
 	end
-    -- TODO: add a better client validation
+	-- TODO: add a better client validation
 	local clients_msg = "["
 	for k, client in ipairs(clients) do
 		local filetypes = client.config.filetypes
@@ -51,11 +51,11 @@ local lsp_client = function()
 		end
 	end
 
-    clients_msg = icon .. clients_msg .. "]"
+	clients_msg = icon .. clients_msg .. "]"
 
-    if string.len(clients_msg) == 6 then
-        return msg
-    end
+	if string.len(clients_msg) == 6 then
+		return msg
+	end
 
 	return clients_msg
 end

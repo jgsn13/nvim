@@ -51,7 +51,7 @@ return packer.startup(function(use)
 	use("akinsho/bufferline.nvim")
 	use("moll/vim-bbye")
 	use("nvim-lualine/lualine.nvim")
-	use({"lukas-reineke/indent-blankline.nvim", after = "nvim-treesitter"})
+	use({ "lukas-reineke/indent-blankline.nvim", after = "nvim-treesitter" })
 
 	-- Colorschemes
 	use("martinsione/darkplus.nvim")
@@ -75,8 +75,8 @@ return packer.startup(function(use)
 	-- use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 	use("j-hui/fidget.nvim")
 
-    -- Formatter
-    use("mhartington/formatter.nvim")
+	-- Formatter
+	use("mhartington/formatter.nvim")
 
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")

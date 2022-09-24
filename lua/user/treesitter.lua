@@ -10,6 +10,7 @@ configs.setup({
 		"javascript",
 		"json",
 		"rust",
+		"python",
 		"c",
 		"cpp",
 		"yaml",

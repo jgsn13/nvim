@@ -163,10 +163,11 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
-	local name = client.name
-	if name == "tsserver" or name == "sumneko_lua" or name == "clangd" then
-		client.resolved_capabilities.document_formatting = false
-	end
+	-- Uncomment this if null-ls is being used as code formatter
+	-- local name = client.name
+	-- if name == "tsserver" or name == "sumneko_lua" or name == "clangd" then
+	-- 	client.resolved_capabilities.document_formatting = false
+	-- end
 	lsp_keymaps(bufnr)
 	lsp_highlight_document(client)
 end

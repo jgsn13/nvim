@@ -75,6 +75,9 @@ return packer.startup(function(use)
 	-- use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 	use("j-hui/fidget.nvim")
 
+    -- Formatter
+    use("mhartington/formatter.nvim")
+
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
 	use("nvim-telescope/telescope-media-files.nvim")

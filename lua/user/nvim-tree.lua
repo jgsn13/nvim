@@ -44,8 +44,8 @@ nvim_tree.setup({
 	},
 	git = {
 		enable = true,
-		ignore = true,
-		timeout = 500,
+		ignore = false,
+		timeout = 200,
 	},
     filesystem_watchers = {
         enable = true,
@@ -65,15 +65,27 @@ nvim_tree.setup({
 		},
 		number = false,
 		relativenumber = false,
+        signcolumn = "yes",
 	},
 	actions = {
 		open_file = {
 			quit_on_open = false,
-			resize_window = true,
+			resize_window = false,
 		},
 	},
 	renderer = {
-		root_folder_modifier = ":t",
+        highlight_git = true,
+        root_folder_modifier = ":t",
+
+        indent_markers = {
+            enable = false,
+            icons = {
+                corner = "└",
+                edge = "│",
+                item = "│",
+                none = " ",
+            },
+        },
 		icons = {
 			webdev_colors = true,
 			git_placement = "after",
@@ -89,15 +101,15 @@ nvim_tree.setup({
 				default = "",
 				symlink = "",
 				bookmark = "",
-				git = {
-					unstaged = "",
-					staged = "S",
-					unmerged = "",
-					renamed = "➜",
-					deleted = "",
-					untracked = "U",
-					ignored = "◌",
-				},
+                git = {
+                    unstaged = "",
+                    staged = "S",
+                    unmerged = "",
+                    renamed = "➜",
+                    deleted = "",
+                    untracked = "U",
+                    ignored = "◌",
+                },
 				folder = {
 					default = "",
 					open = "",
@@ -108,6 +120,11 @@ nvim_tree.setup({
 			},
 		},
 	},
+    filters = {
+        dotfiles = false,
+        custom = { "node_modules", "\\.cache" },
+        exclude = {},
+    },
 })
 
 -- Nvimtree toggle

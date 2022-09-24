@@ -47,10 +47,13 @@ nvim_tree.setup({
 		ignore = true,
 		timeout = 500,
 	},
+    filesystem_watchers = {
+        enable = true,
+    },
 	view = {
-		width = 30,
-		height = 30,
-		hide_root_folder = false,
+        adaptive_size = true,
+		width = 25,
+		hide_root_folder = true,
 		side = "left",
 		mappings = {
 			custom_only = false,

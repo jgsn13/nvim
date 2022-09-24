@@ -239,6 +239,8 @@ formatter.setup({
 				return {
 					exe = "black",
 					args = {
+						"--line-length",
+						120,
 						util.escape_path(util.get_current_buffer_file_path()),
 					},
 					stdin = false,

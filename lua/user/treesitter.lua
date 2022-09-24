@@ -1,4 +1,8 @@
-local configs = require("nvim-treesitter.configs")
+local configs_status_ok, configs = pcall(require, "nvim-treesitter.configs")
+if not configs_status_ok then
+    return
+end
+
 configs.setup({
 	ensure_installed = {
 		"typescript",

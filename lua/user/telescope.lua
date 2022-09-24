@@ -5,7 +5,10 @@ end
 
 telescope.load_extension("media_files")
 
-local actions = require("telescope.actions")
+local actions_status_ok, actions = pcall(require, "telescope.actions")
+if not actions_status_ok then
+    return
+end
 
 telescope.setup({
 	defaults = {

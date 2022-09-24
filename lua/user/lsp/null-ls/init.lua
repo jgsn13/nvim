@@ -19,7 +19,7 @@ null_ls.setup({
 		-- formatting.black.with(formatting_settings.black),
 
 		-- DIagnostics
-		-- diagnostics.eslint,
+		diagnostics.eslint,
 		diagnostics.flake8,
 		diagnostics.pylint,
 	},

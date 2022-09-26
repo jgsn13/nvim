@@ -117,9 +117,9 @@ KEYMAP("c", "<C-l>", "<Right>", OPTS)
 KEYMAP("n", "n", "nzz", OPTS)
 
 -- Buffer stuff
-KEYMAP("n", "<C-a>", ":%y+ <CR>", OPTS) -- copy whole file content
+KEYMAP("n", "<C-a>", ":%y+<CR>", OPTS) -- copy whole file content
 KEYMAP("n", "<C-c>", ":<C-f>", OPTS) -- see cmd history
-KEYMAP("n", "<C-s>", ":w <CR>", OPTS) -- ctrl + s to save file
+KEYMAP("n", "<C-s>", ":w<CR>", OPTS) -- ctrl + s to save file
 KEYMAP("n", "<C-q>", ":bd<cr>", OPTS) -- close buffer
 
 KEYMAP("n", ";", "A;<Esc>", OPTS) -- Insert semicolon

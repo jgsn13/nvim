@@ -54,7 +54,8 @@ return packer.startup(function(use)
 	use({ "lukas-reineke/indent-blankline.nvim", after = "nvim-treesitter" })
 
 	-- Colorschemes
-	use("martinsione/darkplus.nvim")
+	-- use("martinsione/darkplus.nvim") -- This plugin broke on typescript treesitter parser
+	use("olimorris/onedarkpro.nvim")
 
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin

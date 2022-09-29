@@ -4,3 +4,5 @@ if not present then
 end
 
 neogit.setup()
+
+KEYMAP("n", "<Leader>g", ":Neogit<CR>", OPTS)

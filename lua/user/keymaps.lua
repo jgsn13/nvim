@@ -154,9 +154,3 @@ KEYMAP(
 	":execute 'terminal' | let b:term_type = 'wind' | startinsert <CR>",
 	OPTS
 )
-KEYMAP(
-	"n",
-	"<Leader>g",
-	":execute 'terminal lazygit' | let b:term_type = 'wind' | startinsert <CR>",
-	OPTS
-)

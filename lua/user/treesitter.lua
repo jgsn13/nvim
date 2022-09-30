@@ -40,3 +40,13 @@ treesitter.setup({
 		extended_mode = true,
 	},
 })
+
+-- Setup folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevel = 999
+
+KEYMAP("n", "<A-h>", ":foldclose<CR>", OPTS)
+KEYMAP("n", "<A-l>", ":foldopen<CR>", OPTS)
+KEYMAP("v", "<A-h>", ":foldclose<CR>", OPTS)
+KEYMAP("v", "<A-l>", ":foldopen<CR>", OPTS)

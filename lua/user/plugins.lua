@@ -98,6 +98,10 @@ return packer.startup(function(use)
 	use({ "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" })
 	use({ "tanvirtin/vgit.nvim", requires = { "nvim-lua/plenary.nvim" } })
 
+	-- Utilities
+	use({ "max397574/colortils.nvim", cmd = "Colortils" })
+	use("brenoprata10/nvim-highlight-colors")
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then

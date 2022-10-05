@@ -48,7 +48,7 @@ formatter.setup({
 					exe = "prettier",
 					args = {
 						"--tab-width",
-						"4",
+						"2",
 						"--stdin-filepath",
 						util.escape_path(util.get_current_buffer_file_path()),
 					},
@@ -63,7 +63,7 @@ formatter.setup({
 					exe = "prettier",
 					args = {
 						"--tab-width",
-						"4",
+						"2",
 						"--stdin-filepath",
 						util.escape_path(util.get_current_buffer_file_path()),
 					},
@@ -255,7 +255,7 @@ vim.api.nvim_exec(
 	[[
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePost *.html,*.css,*.scss,*.sass,*.rs,*.lua,*.cpp,*.c,*.py FormatWrite
+  autocmd BufWritePost *.html,*.css,*.scss,*.sass,*.rs,*.lua,*.cpp,*.py FormatWrite
 augroup END
 ]],
 	true

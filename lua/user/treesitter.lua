@@ -5,9 +5,12 @@ end
 
 treesitter.setup({
 	ensure_installed = {
-		"typescript",
 		"lua",
+		"typescript",
 		"javascript",
+		"tsx",
+		"css",
+		"scss",
 		"json",
 		"rust",
 		"python",

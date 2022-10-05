@@ -49,12 +49,11 @@ return packer.startup(function(use)
 	use("kyazdani42/nvim-web-devicons")
 	use("kyazdani42/nvim-tree.lua")
 	use("akinsho/bufferline.nvim")
-	use("moll/vim-bbye")
 	use("nvim-lualine/lualine.nvim")
 	use({ "lukas-reineke/indent-blankline.nvim", after = "nvim-treesitter" })
 
 	-- Colorschemes
-	-- use("martinsione/darkplus.nvim") -- This plugin broke on typescript treesitter parser
+	use("martinsione/darkplus.nvim")
 	use("olimorris/onedarkpro.nvim")
 
 	-- cmp plugins
@@ -90,7 +89,7 @@ return packer.startup(function(use)
 	})
 	use("p00f/nvim-ts-rainbow")
 	use("windwp/nvim-ts-autotag")
-	use("nvim-treesitter/nvim-treesitter-angular")
+	-- use("nvim-treesitter/nvim-treesitter-angular") -- this breaks treesitter
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 
 	-- Git

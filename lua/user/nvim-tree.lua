@@ -128,3 +128,4 @@ nvim_tree.setup({
 
 -- Nvimtree toggle
 KEYMAP("n", "<C-n>", ":NvimTreeToggle<cr>", OPTS)
+vim.api.nvim_set_hl(0, "NvimTreeFolderIcon", { fg = "#E0AF68" })

@@ -101,6 +101,10 @@ return packer.startup(function(use)
 	-- Utilities
 	use({ "max397574/colortils.nvim", cmd = "Colortils" })
 	use("brenoprata10/nvim-highlight-colors")
+	use({
+		"folke/todo-comments.nvim",
+		requires = "nvim-lua/plenary.nvim",
+	})
 	use("petertriho/nvim-scrollbar")
 
 	-- Automatically set up your configuration after cloning packer.nvim

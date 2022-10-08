@@ -99,6 +99,7 @@ return packer.startup(function(use)
 	use({ "tanvirtin/vgit.nvim", requires = { "nvim-lua/plenary.nvim" } })
 
 	-- Utilities
+	use("lewis6991/impatient.nvim")
 	use({ "max397574/colortils.nvim", cmd = "Colortils" })
 	use("brenoprata10/nvim-highlight-colors")
 	use({

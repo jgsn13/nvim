@@ -66,8 +66,6 @@ KEYMAP("v", "x", '"_x', OPTS)
 
 -- Don't yank text on delete ( d | dd )
 KEYMAP("n", "dd", '"_dd', OPTS)
-KEYMAP("v", "dd", '"_dd', OPTS)
-KEYMAP("n", "d", '"_d', OPTS)
 KEYMAP("v", "d", '"_d', OPTS)
 
 -- Stay selected on visual mode

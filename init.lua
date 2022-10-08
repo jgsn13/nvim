@@ -1,13 +1,5 @@
-local present1, notify = pcall(require, "notify")
-if present1 then
-	vim.notify = notify
-end
-
-local present2, _ = pcall(require, "impatient")
-if present2 then
-	require("impatient")
-end
-
+require("core.notify")
+require("core.impatient")
 require("core.options")
 require("core.autocmds")
 require("core.keymaps")

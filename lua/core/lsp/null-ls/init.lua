@@ -4,7 +4,7 @@ if not present then
 end
 
 -- local formatting = null_ls.builtins.formatting
--- local formatting_settings = require("user.lsp.null-ls.formatting")
+-- local formatting_settings = require("core.lsp.null-ls.formatting")
 
 local diagnostics = null_ls.builtins.diagnostics
 

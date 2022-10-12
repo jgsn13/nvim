@@ -1,10 +1,5 @@
 local M = {}
 
-local present, saga = pcall(require, "lspsaga")
-if present then
-	saga.init_lsp_saga()
-end
-
 -- TODO: backfill this to template
 M.setup = function()
 	local signs = {
@@ -82,43 +77,26 @@ local function lsp_keymaps(bufnr)
 	keymap("i", "<C-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
 	keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
 	keymap("n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>")
-
-	if present then
-		keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>")
-	end
-
-	if present then
-		keymap("n", "gd", "<cmd>Lspsaga peek_definition<CR>")
-		keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>")
-		keymap("n", "gr", "<cmd>Lspsaga rename<CR>")
-		keymap("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>")
-		keymap("v", "<leader>ca", "<cmd>Lspsaga code_action<CR>")
-		keymap("n", "<leader>e", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
-		keymap("n", "gl", "<cmd>Lspsaga show_line_diagnostics<CR>")
-		keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
-		keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
-	else
-		keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
-		keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
-		keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
-		keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
-		keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>")
-		keymap(
-			"n",
-			"gl",
-			'<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>'
-		)
-		keymap(
-			"n",
-			"[e",
-			'<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>'
-		)
-		keymap(
-			"n",
-			"]e",
-			'<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>'
-		)
-	end
+	keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
+	keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
+	keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
+	keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
+	keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>")
+	keymap(
+		"n",
+		"gl",
+		'<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>'
+	)
+	keymap(
+		"n",
+		"[e",
+		'<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>'
+	)
+	keymap(
+		"n",
+		"]e",
+		'<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>'
+	)
 
 	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 end

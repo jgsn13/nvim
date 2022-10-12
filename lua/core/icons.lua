@@ -135,5 +135,15 @@ icons.setup({
 			color = "#C596C7",
 			name = "prettierrc",
 		},
+		asm = {
+			icon = "",
+			color = "#C596C7",
+			name = "assembly",
+		},
+		s = {
+			icon = "",
+			color = "#C596C7",
+			name = "assembly",
+		},
 	},
 })

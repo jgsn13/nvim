@@ -1,5 +1,10 @@
 local M = {}
 
+local present, saga = pcall(require, "lspsaga")
+if present then
+	saga.init_lsp_saga()
+end
+
 -- TODO: backfill this to template
 M.setup = function()
 	local signs = {
@@ -66,99 +71,55 @@ local function lsp_highlight_document(client)
 end
 
 local function lsp_keymaps(bufnr)
-	local opts = { noremap = true, silent = true }
-	vim.api.nvim_buf_set_keymap(
-		bufnr,
-		"n",
-		"gD",
-		"<cmd>lua vim.lsp.buf.declaration()<CR>",
-		opts
-	)
-	vim.api.nvim_buf_set_keymap(
-		bufnr,
-		"n",
-		"gd",
-		"<cmd>lua vim.lsp.buf.definition()<CR>",
-		opts
-	)
-	vim.api.nvim_buf_set_keymap(
-		bufnr,
-		"n",
-		"K",
-		"<cmd>lua vim.lsp.buf.hover()<CR>",
-		opts
-	)
-	vim.api.nvim_buf_set_keymap(
-		bufnr,
-		"n",
-		"gi",
-		"<cmd>lua vim.lsp.buf.implementation()<CR>",
-		opts
-	)
-	vim.api.nvim_buf_set_keymap(
-		bufnr,
-		"n",
-		"<C-k>",
-		"<cmd>lua vim.lsp.buf.signature_help()<CR>",
-		opts
-	)
-	vim.api.nvim_buf_set_keymap(
-		bufnr,
-		"i",
-		"<C-s>",
-		"<cmd>lua vim.lsp.buf.signature_help()<CR>",
-		opts
-	)
-	vim.api.nvim_buf_set_keymap(
-		bufnr,
-		"n",
-		"<leader>rn",
-		"<cmd>lua vim.lsp.buf.rename()<CR>",
-		opts
-	)
-	vim.api.nvim_buf_set_keymap(
-		bufnr,
-		"n",
-		"gr",
-		"<cmd>lua vim.lsp.buf.references()<CR>",
-		opts
-	)
-	-- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(
-		bufnr,
-		"n",
-		"<leader>e",
-		"<cmd>lua vim.diagnostic.open_float()<CR>",
-		opts
-	)
-	vim.api.nvim_buf_set_keymap(
-		bufnr,
-		"n",
-		"[d",
-		'<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>',
-		opts
-	)
-	vim.api.nvim_buf_set_keymap(
-		bufnr,
-		"n",
-		"gl",
-		'<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>',
-		opts
-	)
-	vim.api.nvim_buf_set_keymap(
-		bufnr,
-		"n",
-		"]d",
-		'<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>',
-		opts
-	)
-	vim.api.nvim_buf_set_keymap(
-		bufnr,
-		"n",
-		"<leader>q",
-		"<cmd>lua vim.diagnostic.setloclist()<CR>",
-		opts
-	)
+	local function keymap(mode, key, cmd)
+		local opts = { noremap = true, silent = true }
+		vim.api.nvim_buf_set_keymap(bufnr, mode, key, cmd, opts)
+	end
+
+	keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
+	keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
+	keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
+	keymap("i", "<C-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
+	keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
+	keymap("n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>")
+
+	if present then
+		keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>")
+	end
+
+	if present then
+		keymap("n", "gd", "<cmd>Lspsaga peek_definition<CR>")
+		keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>")
+		keymap("n", "gr", "<cmd>Lspsaga rename<CR>")
+		keymap("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>")
+		keymap("v", "<leader>ca", "<cmd>Lspsaga code_action<CR>")
+		keymap("n", "<leader>e", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
+		keymap("n", "gl", "<cmd>Lspsaga show_line_diagnostics<CR>")
+		keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
+		keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
+	else
+		keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
+		keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
+		keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
+		keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
+		keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>")
+		keymap(
+			"n",
+			"gl",
+			'<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>'
+		)
+		keymap(
+			"n",
+			"[e",
+			'<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>'
+		)
+		keymap(
+			"n",
+			"]e",
+			'<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>'
+		)
+	end
+
 	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 end
 

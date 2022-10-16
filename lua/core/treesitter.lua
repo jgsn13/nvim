@@ -3,7 +3,7 @@ if not present then
 	return
 end
 
-treesitter.setup({
+local options = {
 	ensure_installed = {
 		"lua",
 		"typescript",
@@ -26,24 +26,33 @@ treesitter.setup({
 		enable = true,
 		disable = { "yaml" },
 	},
-	autotag = {
-		enable = true,
-		filetypes = {
-			"html",
-			"javascript",
-			"javascriptreact",
-			"typescript",
-			"typescriptreact",
-			"svelte",
-			"vue",
-		},
+}
+
+options.markid = { enable = true }
+
+options.rainbow = {
+	enable = true,
+	extended_mode = true,
+}
+
+options.autotag = {
+	enable = true,
+	filetypes = {
+		"html",
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"svelte",
+		"vue",
 	},
-	rainbow = {
-		enable = true,
-		extended_mode = true,
-	},
-	markid = { enable = true },
-})
+}
+
+options.context_commentstring = {
+	enable = true,
+}
+
+treesitter.setup(options)
 
 -- Setup folding
 vim.opt.foldmethod = "expr"

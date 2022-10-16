@@ -89,6 +89,7 @@ return packer.startup(function(use)
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 	})
+	use("David-Kunz/markid")
 	use("p00f/nvim-ts-rainbow")
 	use("windwp/nvim-ts-autotag")
 	-- use("nvim-treesitter/nvim-treesitter-angular") -- this breaks treesitter

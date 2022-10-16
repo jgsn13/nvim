@@ -42,6 +42,7 @@ treesitter.setup({
 		enable = true,
 		extended_mode = true,
 	},
+	markid = { enable = true },
 })
 
 -- Setup folding

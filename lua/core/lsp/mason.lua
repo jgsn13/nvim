@@ -35,11 +35,12 @@ mason_lspconfig.setup_handlers({
 		opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
 		lspconfig.sumneko_lua.setup(opts)
 	end,
-	["tsserver"] = function()
-		local tsserver_opts = require("core.lsp.settings.tsserver")
-		opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
-		lspconfig.tsserver.setup(opts)
-	end,
+	--[[ FIX: when setup tsserver all servers start at the same time to js/ts files ]]
+	--[[ ["tsserver"] = function() ]]
+	--[[ 	local tsserver_opts = require("core.lsp.settings.tsserver") ]]
+	--[[ 	opts = vim.tbl_deep_extend("force", tsserver_opts, opts) ]]
+	--[[ 	lspconfig.tsserver.setup(opts) ]]
+	--[[ end, ]]
 	["jsonls"] = function()
 		local jsonls_opts = require("core.lsp.settings.jsonls")
 		opts = vim.tbl_deep_extend("force", jsonls_opts, opts)

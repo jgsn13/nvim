@@ -14,7 +14,7 @@ require("core.autopairs")
 require("core.comment")
 require("core.neogit")
 require("core.vgit")
-require("core.gitsigns")
+--[[ require("core.gitsigns") ]]
 require("core.icons")
 require("core.nvim-tree")
 require("core.bufferline")

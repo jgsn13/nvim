@@ -28,7 +28,7 @@ local options = {
 	},
 }
 
-options.markid = { enable = true }
+-- options.markid = { enable = true }
 
 options.rainbow = {
 	enable = true,

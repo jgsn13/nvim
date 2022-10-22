@@ -28,8 +28,6 @@ local options = {
 	},
 }
 
--- options.markid = { enable = true }
-
 options.rainbow = {
 	enable = true,
 	extended_mode = true,

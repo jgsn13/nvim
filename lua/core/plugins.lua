@@ -53,9 +53,7 @@ return packer.startup(function(use)
 	use({ "lukas-reineke/indent-blankline.nvim", after = "nvim-treesitter" })
 
 	-- Colorschemes
-	use("martinsione/darkplus.nvim")
 	use("olimorris/onedarkpro.nvim")
-	use("folke/tokyonight.nvim")
 
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
@@ -89,7 +87,6 @@ return packer.startup(function(use)
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 	})
-	use("David-Kunz/markid")
 	use("p00f/nvim-ts-rainbow")
 	use("windwp/nvim-ts-autotag")
 	-- use("nvim-treesitter/nvim-treesitter-angular") -- this breaks treesitter
@@ -97,19 +94,15 @@ return packer.startup(function(use)
 
 	-- Git
 	use("lewis6991/gitsigns.nvim")
-	use({ "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" })
-	use({ "tanvirtin/vgit.nvim", requires = { "nvim-lua/plenary.nvim" } })
 
 	-- Utilities
 	use("lewis6991/impatient.nvim")
-	use("rcarriga/nvim-notify")
 	use({ "max397574/colortils.nvim", cmd = "Colortils" })
 	use("brenoprata10/nvim-highlight-colors")
 	use({
 		"folke/todo-comments.nvim",
 		requires = "nvim-lua/plenary.nvim",
 	})
-	use("petertriho/nvim-scrollbar")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

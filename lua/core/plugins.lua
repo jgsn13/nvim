@@ -51,6 +51,9 @@ return packer.startup(function(use)
 	use("akinsho/bufferline.nvim")
 	use({ "lukas-reineke/indent-blankline.nvim", after = "nvim-treesitter" })
 
+	-- colorscheme
+	use("olimorris/onedarkpro.nvim")
+
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
 	use("hrsh7th/cmp-buffer") -- buffer completions

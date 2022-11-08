@@ -11,6 +11,18 @@ end
 formatter.setup({
 	logging = false,
 	filetype = {
+		prisma = {
+			function()
+				return {
+					exe = "prisma",
+					args = {
+						"format",
+						util.escape_path(util.get_current_buffer_file_path()),
+					},
+					stdin = true,
+				}
+			end,
+		},
 		html = {
 			-- prettier
 			function()
@@ -255,7 +267,7 @@ vim.api.nvim_exec(
 	[[
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePost *.html,*.css,*.scss,*.sass,*.rs,*.lua,*.cpp,*.py FormatWrite
+  autocmd BufWritePost *.prisma,*.html,*.css,*.scss,*.sass,*.rs,*.lua,*.cpp,*.py FormatWrite
 augroup END
 ]],
 	true

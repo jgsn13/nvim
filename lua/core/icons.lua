@@ -80,11 +80,11 @@ icons.setup({
 			color = "#0288D1",
 			name = "angularcomponent",
 		},
-		["service.ts"] = {
-			icon = "",
-			color = "#FFCA28",
-			name = "angularservice",
-		},
+		--[[ ["service.ts"] = { ]]
+		--[[ 	icon = "", ]]
+		--[[ 	color = "#FFCA28", ]]
+		--[[ 	name = "angularservice", ]]
+		--[[ }, ]]
 		["guard.ts"] = {
 			icon = "",
 			color = "#43A047",
@@ -144,6 +144,36 @@ icons.setup({
 			icon = "",
 			color = "#C596C7",
 			name = "assembly",
+		},
+		["service.ts"] = {
+			icon = "ﯤ",
+			color = "#FFCA28",
+			name = "service",
+		},
+		["controller.ts"] = {
+			icon = "ﯤ",
+			color = "#ed4242",
+			name = "controller",
+		},
+		["routes.ts"] = {
+			icon = "ﯤ",
+			color = "#6ded42",
+			name = "routes",
+		},
+		["validators.ts"] = {
+			icon = "ﯤ",
+			color = "#af46f0",
+			name = "validators",
+		},
+		["validator.ts"] = {
+			icon = "ﯤ",
+			color = "#af46f0",
+			name = "validator",
+		},
+		["repository.ts"] = {
+			icon = "ﯤ",
+			color = "#f046df",
+			name = "validator",
 		},
 	},
 })

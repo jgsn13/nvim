@@ -53,6 +53,8 @@ return packer.startup(function(use)
 
 	-- colorscheme
 	use("olimorris/onedarkpro.nvim")
+	use("EdenEast/nightfox.nvim")
+	use("ellisonleao/gruvbox.nvim")
 
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
@@ -92,7 +94,9 @@ return packer.startup(function(use)
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 
 	-- Git
-	use("lewis6991/gitsigns.nvim")
+	-- use("lewis6991/gitsigns.nvim")
+	use({ "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" })
+	use({ "tanvirtin/vgit.nvim", requires = { "nvim-lua/plenary.nvim" } })
 
 	-- Utilities
 	use("lewis6991/impatient.nvim")

@@ -1,11 +1,13 @@
-local present, onedarkpro = pcall(require, "onedarkpro")
-if present then
-	onedarkpro.setup({
-		theme = "onelight",
-	})
-end
+-- local present1, onedarkpro = pcall(require, "onedarkpro")
+-- if present1 then
+-- 	onedarkpro.setup({
+-- 		theme = "onelight",
+-- 	})
+-- end
 
-local colorscheme = "onedarkpro"
+-- local colorscheme = "onedarkpro"
+-- local colorscheme = "carbonfox"
+local colorscheme = "gruvbox"
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 if not status_ok then

@@ -91,7 +91,7 @@ formatter.setup({
 					args = {
 						"--single-quote",
 						"--trailing-comma",
-						"es5",
+						"all",
 						"--stdin-filepath",
 						"--print-width",
 						"80",
@@ -109,7 +109,7 @@ formatter.setup({
 					args = {
 						"--single-quote",
 						"--trailing-comma",
-						"es5",
+						"all",
 						"--stdin-filepath",
 						"--print-width",
 						"80",
@@ -129,7 +129,7 @@ formatter.setup({
 						"80",
 						"--single-quote",
 						"--trailing-comma",
-						"es5",
+						"all",
 						"--stdin-filepath",
 						util.escape_path(util.get_current_buffer_file_path()),
 					},
@@ -145,7 +145,7 @@ formatter.setup({
 					args = {
 						"--single-quote",
 						"--trailing-comma",
-						"es5",
+						"all",
 						"--stdin-filepath",
 						"--print-width",
 						"80",
@@ -178,7 +178,7 @@ formatter.setup({
 					args = {
 						"--single-quote",
 						"--trailing-comma",
-						"es5",
+						"all",
 						"--stdin-filepath",
 						util.escape_path(util.get_current_buffer_file_path()),
 					},
@@ -267,7 +267,7 @@ vim.api.nvim_exec(
 	[[
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePost *.prisma,*.html,*.css,*.scss,*.sass,*.rs,*.lua,*.cpp,*.py FormatWrite
+  autocmd BufWritePost *.prisma,*.html,*.css,*.scss,*.sass,*.ts,*.js,*.tsx,*.jsx,*.rs,*.lua,*.cpp,*.py FormatWrite
 augroup END
 ]],
 	true

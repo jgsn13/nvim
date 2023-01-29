@@ -12,10 +12,10 @@ return
 			},
 		},
 		keys = {
-			{ "<A-h>", ":foldclose<CR>", mode = "n" },
-			{ "<A-l>", ":foldopen<CR>", mode = "n" },
-			{ "<A-h>", ":foldclose<CR>", mode = "v" },
-			{ "<A-l>", ":foldopen<CR>", mode = "v" },
+			{ "<A-h>", ":foldclose<CR>", desc = "Fold Close", mode = "n" },
+			{ "<A-l>", ":foldopen<CR>", desc = "Fold Open", mode = "n" },
+			{ "<A-h>", ":foldclose<CR>", desc = "Fold Close", mode = "v" },
+			{ "<A-l>", ":foldopen<CR>", desc = "Fold Open", mode = "v" },
 		},
 		config = function()
 			local present, treesitter =

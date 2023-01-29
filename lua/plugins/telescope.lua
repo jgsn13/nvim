@@ -4,13 +4,14 @@ return {
 		"nvim-telescope/telescope-media-files.nvim",
 	},
 	keys = {
-		-- { "<C-p>", ":Telescope projects<CR>" },
-		-- {"ff", ":Telescope find_files <CR>"},
+		-- { "<C-p>", ":Telescope projects<CR>", desc = "Projects" },
+		-- {"ff", ":Telescope find_files <CR>", desc = "Find Files"},
 		{
 			"ff",
 			"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
+			desc = "Find Files",
 		},
-		{ "fg", ":Telescope live_grep <CR>" },
+		{ "fg", ":Telescope live_grep <CR>", desc = "Live Grep" },
 	},
 	config = function()
 		local status_ok, telescope = pcall(require, "telescope")

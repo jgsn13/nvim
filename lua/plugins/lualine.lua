@@ -1,6 +1,12 @@
 return {
 	"nvim-lualine/lualine.nvim",
 	config = function()
+		-- Load theme before lualine
+		local theme_ok, _ = pcall(require, "vscode")
+		if not theme_ok then
+			return
+		end
+
 		local status_ok, lualine = pcall(require, "lualine")
 		if not status_ok then
 			return

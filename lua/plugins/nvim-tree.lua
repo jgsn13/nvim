@@ -55,7 +55,9 @@ return {
 			},
 			git = {
 				enable = true,
-				ignore = false,
+				ignore = true,
+				show_on_dirs = true,
+				show_on_open_dirs = true,
 				timeout = 200,
 			},
 			filesystem_watchers = {
@@ -86,13 +88,16 @@ return {
 			},
 			renderer = {
 				highlight_git = true,
-				root_folder_modifier = ":t",
+				root_folder_label = ":~:s?$?/..?",
+				indent_width = 4,
 				indent_markers = {
 					enable = false,
+					inline_arrows = true,
 					icons = {
 						corner = "└",
 						edge = "│",
 						item = "│",
+						bottom = "─",
 						none = " ",
 					},
 				},
@@ -100,7 +105,7 @@ return {
 					webdev_colors = true,
 					git_placement = "after",
 					padding = " ",
-					-- symlink_arrow = " ➛ ",
+					symlink_arrow = " ➛ ",
 					show = {
 						file = true,
 						folder = true,

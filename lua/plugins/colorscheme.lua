@@ -1,14 +1,6 @@
 return {
 	"Mofiqul/vscode.nvim",
 	config = function()
-		-- local colorscheme = "darkplus"
-
-		-- local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
-		-- if not status_ok then
-		-- 	vim.notify("colorscheme " .. colorscheme .. " not found!")
-		-- 	return
-		-- end
-
 		local status_ok, vscode = pcall(require, "vscode")
 		if not status_ok then
 			return

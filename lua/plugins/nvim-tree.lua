@@ -3,6 +3,13 @@ return {
 	dependencies = {
 		"nvim-tree/nvim-web-devicons", -- optional, for file icons
 	},
+	keys = {
+		{
+			"<C-n>",
+			":NvimTreeToggle<cr>",
+			desc = "NvimTree",
+		},
+	},
 	config = function()
 		local status_ok, nvim_tree = pcall(require, "nvim-tree")
 		if not status_ok then
@@ -130,8 +137,6 @@ return {
 			},
 		})
 
-		-- Nvimtree toggle
-		KEYMAP("n", "<C-n>", ":NvimTreeToggle<cr>", OPTS)
-		vim.api.nvim_set_hl(0, "NvimTreeFolderIcon", { fg = "#E0AF68" })
+		-- vim.api.nvim_set_hl(0, "NvimTreeFolderIcon", { fg = "#E0AF68" })
 	end,
 }

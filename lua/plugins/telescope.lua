@@ -3,6 +3,15 @@ return {
 	dependencies = {
 		"nvim-telescope/telescope-media-files.nvim",
 	},
+	keys = {
+		-- { "<C-p>", ":Telescope projects<CR>" },
+		-- {"ff", ":Telescope find_files <CR>"},
+		{
+			"ff",
+			"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
+		},
+		{ "fg", ":Telescope live_grep <CR>" },
+	},
 	config = function()
 		local status_ok, telescope = pcall(require, "telescope")
 		if not status_ok then
@@ -95,16 +104,5 @@ return {
 				-- please take a look at the readme of the extension you want to configure
 			},
 		})
-
-		-- Telescope
-		KEYMAP("n", "<C-p>", ":Telescope projects<CR>", OPTS)
-		-- KEYMAP("n", "ff", ":Telescope find_files <CR>", OPTS)
-		KEYMAP(
-			"n",
-			"ff",
-			"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
-			OPTS
-		)
-		KEYMAP("n", "fg", ":Telescope live_grep <CR>", OPTS)
 	end,
 }

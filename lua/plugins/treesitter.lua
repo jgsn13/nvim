@@ -9,8 +9,13 @@ return
 				"windwp/nvim-ts-autotag",
 				-- "nvim-treesitter/nvim-treesitter-angular", -- this breaks treesitter
 				"JoosepAlviste/nvim-ts-context-commentstring",
-				config = function() end,
 			},
+		},
+		keys = {
+			{ "<A-h>", ":foldclose<CR>", mode = "n" },
+			{ "<A-l>", ":foldopen<CR>", mode = "n" },
+			{ "<A-h>", ":foldclose<CR>", mode = "v" },
+			{ "<A-l>", ":foldopen<CR>", mode = "v" },
 		},
 		config = function()
 			local present, treesitter =
@@ -72,11 +77,6 @@ return
 			vim.opt.foldmethod = "expr"
 			vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 			vim.opt.foldlevel = 999
-
-			KEYMAP("n", "<A-h>", ":foldclose<CR>", OPTS)
-			KEYMAP("n", "<A-l>", ":foldopen<CR>", OPTS)
-			KEYMAP("v", "<A-h>", ":foldclose<CR>", OPTS)
-			KEYMAP("v", "<A-l>", ":foldopen<CR>", OPTS)
 
 			local status_ok, indent_blankline =
 				pcall(require, "indent_blankline")

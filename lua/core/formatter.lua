@@ -30,7 +30,7 @@ formatter.setup({
 					exe = "prettier",
 					args = {
 						"--tab-width",
-						"4",
+						"2",
 						"--stdin-filepath",
 						util.escape_path(util.get_current_buffer_file_path()),
 					},
@@ -45,7 +45,7 @@ formatter.setup({
 					exe = "prettier",
 					args = {
 						"--tab-width",
-						"4",
+						"2",
 						"--stdin-filepath",
 						util.escape_path(util.get_current_buffer_file_path()),
 					},
@@ -76,6 +76,19 @@ formatter.setup({
 					args = {
 						"--tab-width",
 						"2",
+						"--stdin-filepath",
+						util.escape_path(util.get_current_buffer_file_path()),
+					},
+					stdin = true,
+				}
+			end,
+		},
+		json = {
+			-- prettier
+			function()
+				return {
+					exe = "prettier",
+					args = {
 						"--stdin-filepath",
 						util.escape_path(util.get_current_buffer_file_path()),
 					},
@@ -267,7 +280,7 @@ vim.api.nvim_exec(
 	[[
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePost *.prisma,*.html,*.css,*.scss,*.sass,*.ts,*.js,*.tsx,*.jsx,*.rs,*.lua,*.cpp,*.py FormatWrite
+  autocmd BufWritePost *.prisma,*.html,*.css,*.scss,*.sass,*.ts,*.json,*.js,*.tsx,*.jsx,*.rs,*.lua,*.cpp,*.py FormatWrite
 augroup END
 ]],
 	true

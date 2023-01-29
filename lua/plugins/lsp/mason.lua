@@ -22,8 +22,8 @@ mason_lspconfig.setup({
 })
 
 local opts = {
-	on_attach = require("core.lsp.handlers").on_attach,
-	capabilities = require("core.lsp.handlers").capabilities,
+	on_attach = require("plugins.lsp.handlers").on_attach,
+	capabilities = require("plugins.lsp.handlers").capabilities,
 }
 
 mason_lspconfig.setup_handlers({
@@ -31,23 +31,23 @@ mason_lspconfig.setup_handlers({
 		lspconfig[server_name].setup(opts)
 	end,
 	["sumneko_lua"] = function()
-		local sumneko_opts = require("core.lsp.settings.sumneko_lua")
+		local sumneko_opts = require("plugins.lsp.settings.sumneko_lua")
 		opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
 		lspconfig.sumneko_lua.setup(opts)
 	end,
 	--[[ FIX: when setup tsserver all servers start at the same time to js/ts files ]]
 	--[[ ["tsserver"] = function() ]]
-	--[[ 	local tsserver_opts = require("core.lsp.settings.tsserver") ]]
+	--[[ 	local tsserver_opts = require("plugins.lsp.settings.tsserver") ]]
 	--[[ 	opts = vim.tbl_deep_extend("force", tsserver_opts, opts) ]]
 	--[[ 	lspconfig.tsserver.setup(opts) ]]
 	--[[ end, ]]
 	["jsonls"] = function()
-		local jsonls_opts = require("core.lsp.settings.jsonls")
+		local jsonls_opts = require("plugins.lsp.settings.jsonls")
 		opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
 		lspconfig.jsonls.setup(opts)
 	end,
 	["pyright"] = function()
-		local pyright_opts = require("core.lsp.settings.pyright")
+		local pyright_opts = require("plugins.lsp.settings.pyright")
 		opts = vim.tbl_deep_extend("force", pyright_opts, opts)
 		lspconfig.pyright.setup(opts)
 	end,

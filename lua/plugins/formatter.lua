@@ -315,7 +315,7 @@ return {
 			[[
             augroup FormatAutogroup
               autocmd!
-              autocmd BufWritePost *.prisma,*.html,*.css,*.scss,*.sass,*.ts,*.json,*.js,*.tsx,*.jsx,*.rs,*.lua,*.cpp,*.py FormatWrite
+              autocmd BufWritePost *.prisma,*.html,*.css,*.scss,*.sass,*.ts,*.json,*.js,*.mjs,*.tsx,*.jsx,*.rs,*.lua,*.cpp,*.py FormatWrite
             augroup END
             ]],
 			true

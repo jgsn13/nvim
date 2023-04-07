@@ -30,11 +30,11 @@ mason_lspconfig.setup_handlers({
 	function(server_name)
 		lspconfig[server_name].setup(opts)
 	end,
-	["sumneko_lua"] = function()
-		local sumneko_opts = require("plugins.lsp.settings.sumneko_lua")
-		opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
-		lspconfig.sumneko_lua.setup(opts)
-	end,
+	--[[ ["sumneko_lua"] = function() ]]
+	--[[ 	local sumneko_opts = require("plugins.lsp.settings.sumneko_lua") ]]
+	--[[ 	opts = vim.tbl_deep_extend("force", sumneko_opts, opts) ]]
+	--[[ 	lspconfig.sumneko_lua.setup(opts) ]]
+	--[[ end, ]]
 	--[[ FIX: when setup tsserver all servers start at the same time to js/ts files ]]
 	--[[ ["tsserver"] = function() ]]
 	--[[ 	local tsserver_opts = require("plugins.lsp.settings.tsserver") ]]

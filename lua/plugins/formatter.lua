@@ -311,7 +311,7 @@ return {
 		})
 
 		-- Format on save
-		vim.api.nvim_exec(
+		EXEC(
 			[[
             augroup FormatAutogroup
               autocmd!

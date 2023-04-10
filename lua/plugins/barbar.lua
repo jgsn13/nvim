@@ -10,10 +10,6 @@ return {
 		end
 
 		barbar.setup({
-			-- WARN: do not copy everything below into your config!
-			--       It is just an example of what configuration options there are.
-			--       The defaults are suitable for most people.
-
 			-- Enable/disable animations
 			animation = true,
 
@@ -37,7 +33,7 @@ return {
 			focus_on_close = "left",
 
 			-- Hide inactive buffers and file extensions. Other options are `alternate`, `current`, and `visible`.
-			hide = { extensions = true, inactive = true },
+			hide = { extensions = true, inactive = false },
 
 			-- Disable highlighting alternate buffers
 			highlight_alternate = false,

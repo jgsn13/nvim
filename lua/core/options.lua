@@ -36,7 +36,7 @@ local options = {
 	guifont = "FiraCode NF:h10", -- the font used in graphical neovim applications
 	guifontwide = "Noto Color Emoji",
 	shortmess = "I",
-    statuscolumn = "%@SignCb@%s%=%T%@NumCb@%C %l %r %T"
+	statuscolumn = "%@SignCb@%s%=%T%@NumCb@%C %l %r %T",
 }
 
 vim.opt.shortmess:append("c")

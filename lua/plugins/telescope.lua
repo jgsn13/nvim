@@ -12,6 +12,11 @@ return {
 			desc = "Find Files",
 		},
 		{ "fg", ":Telescope live_grep <CR>", desc = "Live Grep" },
+		{
+			"fc",
+			"<cmd>lua require('telescope.builtin').grep_string()<cr>",
+			desc = "Find for word under cursor",
+		},
 	},
 	config = function()
 		local status_ok, telescope = pcall(require, "telescope")

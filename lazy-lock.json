@@ -33,7 +33,7 @@
   "nvim-lspconfig": { "branch": "master", "commit": "eddaef928c1e1dd79a96f5db45f2fd7f2efe7ea0" },
   "nvim-notify": { "branch": "master", "commit": "50d037041ada0895aeba4c0215cde6d11b7729c4" },
   "nvim-scrollbar": { "branch": "main", "commit": "f85b29805cf917f9b1d5ff0c9a52c5b1bdca5943" },
-  "nvim-treesitter": { "branch": "master", "commit": "f90a80a5a5b8c4b54be96e91a10d774d60afccc1" },
+  "nvim-treesitter": { "branch": "master", "commit": "21f2fb188e4e5bb81fd0ff467c5e96dad858becb" },
   "nvim-ts-autotag": { "branch": "main", "commit": "cac97f3b47bcb927db6d1d784c0c323056506ef3" },
   "nvim-ts-context-commentstring": { "branch": "main", "commit": "729d83ecb990dc2b30272833c213cc6d49ed5214" },
   "nvim-ts-rainbow": { "branch": "master", "commit": "ef95c15a935f97c65a80e48e12fe72d49aacf9b9" },
@@ -45,6 +45,5 @@
   "telescope-media-files.nvim": { "branch": "master", "commit": "0826c7a730bc4d36068f7c85cf4c5b3fd9fb570a" },
   "telescope.nvim": { "branch": "master", "commit": "6258d50b09f9ae087317e392efe7c05a7323492d" },
   "todo-comments.nvim": { "branch": "main", "commit": "8febc60a76feefd8203077ef78b6a262ea1a41f9" },
-  "toggleterm.nvim": { "branch": "main", "commit": "1c5996ee3c30b54751093fe68d40676859e7778f" },
   "vscode.nvim": { "branch": "main", "commit": "d89fa59a78eda50158d94bde059953bda2f56142" }
 }

@@ -20,8 +20,8 @@ null_ls.setup({
 
 		-- DIagnostics
 		-- diagnostics.eslint,
-		diagnostics.flake8,
-		diagnostics.pylint,
+		-- diagnostics.flake8,
+		-- diagnostics.pylint,
 		-- diagnostics.luacheck,
 	},
 })

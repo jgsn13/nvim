@@ -77,6 +77,14 @@ return {
 
 				indent_markers = {
 					enable = false,
+					inline_arrows = true,
+					icons = {
+						corner = "└",
+						edge = "│",
+						item = "│",
+						bottom = "─",
+						none = " ",
+					},
 				},
 
 				icons = {

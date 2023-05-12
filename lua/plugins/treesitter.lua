@@ -10,16 +10,6 @@ return {
 			"JoosepAlviste/nvim-ts-context-commentstring",
 		},
 	},
-	keys = {
-	    -- stylua: ignore
-		{ "<A-h>", ":foldclose<CR>", mode = "n", silent = true, desc = "Fold Close" },
-	    -- stylua: ignore
-		{ "<A-l>", ":foldopen<CR>", mode = "n", silent = true, desc = "Fold Open" },
-	    -- stylua: ignore
-		{ "<A-h>", ":foldclose<CR>", mode = "n", silent = true, desc = "Fold Close" },
-	    -- stylua: ignore
-		{ "<A-l>", ":foldopen<CR>", mode = "n", silent = true, desc = "Fold Open" },
-	},
 	init = function()
 		local present, treesitter = pcall(require, "nvim-treesitter.configs")
 		if not present then

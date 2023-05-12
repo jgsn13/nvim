@@ -1,3 +1,9 @@
+vim.opt.viewoptions:remove("curdir") -- disable saving current directory with views
+vim.opt.shortmess:append({ s = true, I = true }) -- disable startup message
+vim.opt.backspace:append({ "nostop" }) -- Don't stop backspace at insert
+if vim.fn.has("nvim-0.9") == 1 then
+	vim.opt.diffopt:append("linematch:60") -- enable linematch diff algorithm
+end
 -- :help options
 local options = {
 	opt = {
@@ -36,15 +42,15 @@ local options = {
 		sidescrolloff = 8, -- Number of columns to keep at the sides of the cursor
 		-- guifont = "FiraCode NF:h10", -- the font used in graphical neovim applications
 		-- guifontwide = "Noto Color Emoji",
-		shortmess = "I",
-		statuscolumn = "%l %r %s %T",
+		-- statuscolumn = "%l %r %s %T",
 		breakindent = true, -- Wrap indent to match  line start
 		copyindent = true, -- Copy the previous indentation on autoindenting
-		fillchars = { eob = " " }, -- Disable `~` on nonexistent lines
-		foldenable = true, -- enable fold for nvim-ufo
+		foldcolumn = vim.fn.has("nvim-0.9") == 1 and "1" or nil, -- show foldcolumn in nvim 0.9
 		foldlevel = 99, -- set high foldlevel for nvim-ufo
 		foldlevelstart = 99, -- start with all code unfolded
-		foldcolumn = vim.fn.has("nvim-0.9") == 1 and "1" or nil, -- show foldcolumn in nvim 0.9
+		foldenable = true, -- enable fold for nvim-ufo
+		fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]],
+		-- fillchars = { eob = " " }, -- Disable `~` on nonexistent lines
 		history = 100, -- Number of commands to remember in a history table
 		infercase = true, -- Infer cases in keyword completion
 		laststatus = 3, -- globalstatus

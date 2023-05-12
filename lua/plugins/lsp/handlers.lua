@@ -18,7 +18,7 @@ M.setup = function()
 
 	local config = {
 		-- disable virtual text
-		virtual_text = false,
+		virtual_text = true,
 		-- show signs
 		signs = {
 			active = signs,
@@ -27,9 +27,9 @@ M.setup = function()
 		underline = true,
 		severity_sort = true,
 		float = {
-			focusable = false,
+			focusable = true,
 			style = "minimal",
-			border = "rounded",
+			-- border = "rounded",
 			source = "always",
 			header = "",
 			prefix = "",
@@ -66,39 +66,33 @@ local function lsp_highlight_document(client)
 end
 
 local function lsp_keymaps(bufnr)
-	local function keymap(mode, key, cmd)
-		local opts = { noremap = true, silent = true }
-		vim.api.nvim_buf_set_keymap(bufnr, mode, key, cmd, opts)
-	end
+	local opts = { noremap = true, silent = true }
 
-	keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
-	keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
-	keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-	keymap("i", "<C-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-	keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
-	keymap("n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>")
-	keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
-	keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
-	keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
-	keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
-	keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>")
-	keymap(
-		"n",
-		"gl",
-		'<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>'
-	)
-	keymap(
-		"n",
-		"[e",
-		'<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>'
-	)
-	keymap(
-		"n",
-		"]e",
-		'<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>'
-	)
+	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+	vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+	vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, opts)
+	vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
+	vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
+	vim.keymap.set("n", "<space>wl", function()
+		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+	end, opts)
+	vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
+	vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
+	vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
+	vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
 
-	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
+	vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
+	vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
+	vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+	vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+
+	-- vim.keymap.set("n", "<space>f", function()
+	-- 	vim.lsp.buf.format({ async = true })
+	-- end, opts)
+	-- vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 end
 
 M.on_attach = function(client, bufnr)

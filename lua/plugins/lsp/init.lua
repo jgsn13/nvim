@@ -7,8 +7,8 @@ return {
 		"j-hui/fidget.nvim",
 	},
 	config = function()
-		local status_ok, _ = pcall(require, "lspconfig")
-		if not status_ok then
+		local lspconfig_present, _ = pcall(require, "lspconfig")
+		if not lspconfig_present then
 			return
 		end
 

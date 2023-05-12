@@ -34,10 +34,10 @@ local options = {
 		wrap = false, -- display lines as one long line
 		scrolloff = 8, -- Number of lines to keep above and below the cursor
 		sidescrolloff = 8, -- Number of columns to keep at the sides of the cursor
-		guifont = "FiraCode NF:h10", -- the font used in graphical neovim applications
-		guifontwide = "Noto Color Emoji",
+		-- guifont = "FiraCode NF:h10", -- the font used in graphical neovim applications
+		-- guifontwide = "Noto Color Emoji",
 		shortmess = "I",
-		statuscolumn = "%@SignCb@%s%=%T%@NumCb@%C %l %r %T",
+		statuscolumn = "%l %r %s %T",
 		breakindent = true, -- Wrap indent to match  line start
 		copyindent = true, -- Copy the previous indentation on autoindenting
 		fillchars = { eob = " " }, -- Disable `~` on nonexistent lines
@@ -70,16 +70,10 @@ local options = {
 	t = { bufs = vim.api.nvim_list_bufs() }, -- initialize buffers for the current tab
 }
 
-vim.opt.shortmess:append("c")
-
 for scope, table in pairs(options) do
 	for setting, value in pairs(table) do
 		vim[scope][setting] = value
 	end
 end
-
-vim.cmd("set whichwrap+=<,>,[,],h,l")
-vim.cmd([[set iskeyword+=-]])
-vim.cmd([[set formatoptions-=cro]]) -- TODO: this doesn't seem to work
 
 vim.g.editorconfig = true

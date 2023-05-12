@@ -1,16 +1,16 @@
-local present, lspconfig = pcall(require, "lspconfig")
-
-if not present then
+local lspconfig_present, lspconfig = pcall(require, "lspconfig")
+if not lspconfig_present then
 	return
 end
 
-local present1, mason = pcall(require, "mason")
-if not present1 then
+local mason_present, mason = pcall(require, "mason")
+if not mason_present then
 	return
 end
 
-local present2, mason_lspconfig = pcall(require, "mason-lspconfig")
-if not present2 then
+local mason_lspconfig_present, mason_lspconfig =
+	pcall(require, "mason-lspconfig")
+if not mason_lspconfig_present then
 	return
 end
 
@@ -30,25 +30,20 @@ mason_lspconfig.setup_handlers({
 	function(server_name)
 		lspconfig[server_name].setup(opts)
 	end,
-	--[[ ["sumneko_lua"] = function() ]]
-	--[[ 	local sumneko_opts = require("plugins.lsp.settings.sumneko_lua") ]]
-	--[[ 	opts = vim.tbl_deep_extend("force", sumneko_opts, opts) ]]
-	--[[ 	lspconfig.sumneko_lua.setup(opts) ]]
-	--[[ end, ]]
-	--[[ FIX: when setup tsserver all servers start at the same time to js/ts files ]]
-	--[[ ["tsserver"] = function() ]]
-	--[[ 	local tsserver_opts = require("plugins.lsp.settings.tsserver") ]]
-	--[[ 	opts = vim.tbl_deep_extend("force", tsserver_opts, opts) ]]
-	--[[ 	lspconfig.tsserver.setup(opts) ]]
-	--[[ end, ]]
+	["lua_ls"] = function()
+		local lua_ls_opts = require("plugins.lsp.settings.lua_ls")
+		lspconfig.lua_ls.setup(lua_ls_opts)
+	end,
+	["tsserver"] = function()
+		local tsserver_opts = require("plugins.lsp.settings.tsserver")
+		lspconfig.tsserver.setup(tsserver_opts)
+	end,
 	["jsonls"] = function()
 		local jsonls_opts = require("plugins.lsp.settings.jsonls")
-		opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
-		lspconfig.jsonls.setup(opts)
+		lspconfig.jsonls.setup(jsonls_opts)
 	end,
 	["pyright"] = function()
 		local pyright_opts = require("plugins.lsp.settings.pyright")
-		opts = vim.tbl_deep_extend("force", pyright_opts, opts)
-		lspconfig.pyright.setup(opts)
+		lspconfig.pyright.setup(pyright_opts)
 	end,
 })

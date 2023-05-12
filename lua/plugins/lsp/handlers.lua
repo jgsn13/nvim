@@ -17,8 +17,7 @@ M.setup = function()
 	end
 
 	local config = {
-		-- disable virtual text
-		virtual_text = true,
+		virtual_text = false,
 		-- show signs
 		signs = {
 			active = signs,
@@ -29,7 +28,7 @@ M.setup = function()
 		float = {
 			focusable = true,
 			style = "minimal",
-			-- border = "rounded",
+			border = "rounded",
 			source = "always",
 			header = "",
 			prefix = "",
@@ -47,22 +46,6 @@ M.setup = function()
 		vim.lsp.with(vim.lsp.handlers.signature_help, {
 			border = "rounded",
 		})
-end
-
-local function lsp_highlight_document(client)
-	-- Set autocommands conditional on server_capabilities
-	if client.server_capabilities.document_highlight then
-		EXEC(
-			[[
-              augroup lsp_document_highlight
-                autocmd! * <buffer>
-                autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-                autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-              augroup END
-            ]],
-			false
-		)
-	end
 end
 
 local function lsp_keymaps(bufnr)
@@ -102,7 +85,6 @@ M.on_attach = function(client, bufnr)
 	-- 	client.server_capabilities.document_formatting = false
 	-- end
 	lsp_keymaps(bufnr)
-	lsp_highlight_document(client)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

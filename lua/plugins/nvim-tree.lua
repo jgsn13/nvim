@@ -7,6 +7,8 @@ return {
 		{
 			"<C-n>",
 			":NvimTreeToggle<cr>",
+			mode = "n",
+			silent = true,
 			desc = "NvimTree",
 		},
 	},

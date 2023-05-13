@@ -40,7 +40,7 @@ return {
 				},
 			},
 			signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
-			numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
+			numhl = true, -- Toggle with `:Gitsigns toggle_numhl`
 			linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
 			word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
 			watch_gitdir = {
@@ -51,14 +51,14 @@ return {
 			current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
 			current_line_blame_opts = {
 				virt_text = true,
-				virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
+				virt_text_pos = "right_align", -- 'eol' | 'overlay' | 'right_align'
 				delay = 1000,
 				ignore_whitespace = false,
 			},
 			current_line_blame_formatter_opts = {
 				relative_time = false,
 			},
-			sign_priority = 6,
+			sign_priority = 9999,
 			update_debounce = 100,
 			status_formatter = nil, -- Use default
 			max_file_length = 40000,

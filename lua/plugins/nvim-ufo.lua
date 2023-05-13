@@ -1,9 +1,25 @@
 return {
 	"kevinhwang91/nvim-ufo",
-	event = { "VeryLazy" },
 	dependencies = {
 		"kevinhwang91/promise-async",
 		"luukvbaal/statuscol.nvim",
+	},
+	event = "VeryLazy",
+	keys = {
+		{
+			"<A-h>",
+			":foldclose<CR>",
+			mode = "n",
+			silent = true,
+			desc = "Fold close",
+		},
+		{
+			"<A-l>",
+			":foldopen<CR>",
+			mode = "n",
+			silent = true,
+			desc = "Fold open",
+		},
 	},
 	opts = {
 		preview = {

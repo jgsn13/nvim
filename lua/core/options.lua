@@ -42,15 +42,9 @@ local options = {
 		sidescrolloff = 8, -- Number of columns to keep at the sides of the cursor
 		-- guifont = "FiraCode NF:h10", -- the font used in graphical neovim applications
 		-- guifontwide = "Noto Color Emoji",
-		-- statuscolumn = "%l %r %s %T",
+		-- statuscolumn = "%C %l %r %s %T",
 		breakindent = true, -- Wrap indent to match  line start
 		copyindent = true, -- Copy the previous indentation on autoindenting
-		foldcolumn = vim.fn.has("nvim-0.9") == 1 and "1" or nil, -- show foldcolumn in nvim 0.9
-		foldlevel = 99, -- set high foldlevel for nvim-ufo
-		foldlevelstart = 99, -- start with all code unfolded
-		foldenable = true, -- enable fold for nvim-ufo
-		fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]],
-		-- fillchars = { eob = " " }, -- Disable `~` on nonexistent lines
 		history = 100, -- Number of commands to remember in a history table
 		infercase = true, -- Infer cases in keyword completion
 		laststatus = 3, -- globalstatus
@@ -58,6 +52,9 @@ local options = {
 		preserveindent = true, -- Preserve indent structure as much as possible
 		splitkeep = vim.fn.has("nvim-0.9") == 1 and "screen" or nil, -- Maintain code view when splitting
 		virtualedit = "block", -- allow going past end of line in visual block mode
+	},
+	o = {
+		fillchars = [[eob: ]],
 	},
 	g = {
 		highlighturl_enabled = true, -- highlight URLs by default

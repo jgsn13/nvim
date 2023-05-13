@@ -1,7 +1,10 @@
 return {
 	"kevinhwang91/nvim-ufo",
-	event = { "InsertEnter" },
-	dependencies = { "kevinhwang91/promise-async" },
+	event = { "VeryLazy" },
+	dependencies = {
+		"kevinhwang91/promise-async",
+		"luukvbaal/statuscol.nvim",
+	},
 	opts = {
 		preview = {
 			mappings = {
@@ -39,4 +42,9 @@ return {
 				end
 		end,
 	},
+	config = function()
+		vim.keymap.set("n", "zR", require("ufo").openAllFolds)
+		vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
+		vim.keymap.set("n", "zr", require("ufo").openFoldsExceptKinds)
+	end,
 }

@@ -6,7 +6,7 @@ return {
 		"jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
 		"j-hui/fidget.nvim",
 	},
-	config = function()
+	init = function()
 		local lspconfig_present, _ = pcall(require, "lspconfig")
 		if not lspconfig_present then
 			return

@@ -1,6 +1,5 @@
 local M = {}
 
--- TODO: backfill this to template
 M.setup = function()
 	local signs = {
 		{ name = "DiagnosticSignError", text = "" },
@@ -36,16 +35,6 @@ M.setup = function()
 	}
 
 	vim.diagnostic.config(config)
-
-	vim.lsp.handlers["textDocument/hover"] =
-		vim.lsp.with(vim.lsp.handlers.hover, {
-			border = "rounded",
-		})
-
-	vim.lsp.handlers["textDocument/signatureHelp"] =
-		vim.lsp.with(vim.lsp.handlers.signature_help, {
-			border = "rounded",
-		})
 end
 
 local function lsp_keymaps(bufnr)
@@ -71,11 +60,6 @@ local function lsp_keymaps(bufnr)
 	vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
 	vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 	vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-
-	-- vim.keymap.set("n", "<space>f", function()
-	-- 	vim.lsp.buf.format({ async = true })
-	-- end, opts)
-	-- vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 end
 
 M.on_attach = function(client, bufnr)

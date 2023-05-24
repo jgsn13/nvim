@@ -104,8 +104,8 @@ KEYMAP("n", "<C-a>", ":%y+<CR>", OPTS) -- copy whole file content
 KEYMAP("n", "<C-c>", ":<C-f>", OPTS) -- see cmd history
 KEYMAP("n", "<C-s>", ":w<CR>", OPTS) -- ctrl + s to save file
 
-KEYMAP("n", ";", "A;<Esc>", OPTS) -- Insert semicolon
-KEYMAP("n", ",", "A,<Esc>", OPTS) -- Insert comma
+-- KEYMAP("n", ";", "A;<Esc>", OPTS) -- Insert semicolon
+-- KEYMAP("n", ",", "A,<Esc>", OPTS) -- Insert comma
 
 -- Get out of terminal mode
 KEYMAP("t", "jk", "<C-\\><C-n>", { silent = true })

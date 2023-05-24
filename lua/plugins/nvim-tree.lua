@@ -3,7 +3,7 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	keys = {
 		{
-			"<C-n>",
+			"<leader>e",
 			":NvimTreeToggle<cr>",
 			mode = "n",
 			silent = true,

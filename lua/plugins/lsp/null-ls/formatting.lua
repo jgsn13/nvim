@@ -2,27 +2,12 @@ return {
     -- *.prisma,*.html,*.css,*.scss,*.sass,*.ts,*.json,*.js,*.mjs,*.tsx,*.jsx,*.rs,*.lua,*.cpp,*.py
 
     prettier = {
-        filetypes = {
-            "html",
-            "css",
-            "scss",
-            "sass",
-            "ts",
-            "json",
-            "js",
-            "mjs",
-            "tsx",
-            "jsx",
-            "typescriptreact",
-            "javascriptreact",
-        },
         extra_args = {
             "--single-quote",
             "--trailing-comma",
-            "es5",
-            "--stdin-filepath",
+            "all",
             "--print-width",
-            "80",
+            80,
         },
     },
     rustfmt = {

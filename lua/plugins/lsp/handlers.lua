@@ -63,12 +63,13 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
-	-- Uncomment this if null-ls is being used as code formatter
-	-- local name = client.name
-	-- if name == "tsserver" or name == "sumneko_lua" or name == "clangd" then
-	-- 	client.server_capabilities.document_formatting = false
-	-- end
 	lsp_keymaps(bufnr)
+
+	-- avoid null-ls conflicts
+	local name = client.name
+	if name == "tsserver" or name == "lua_ls" or name == "clangd" then
+	    client.server_capabilities.document_formatting = false
+	end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

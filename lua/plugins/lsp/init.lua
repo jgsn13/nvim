@@ -4,7 +4,7 @@ return {
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
-		"j-hui/fidget.nvim",
+		"folke/neodev.nvim",
 	},
 	init = function()
 		local lspconfig_present, _ = pcall(require, "lspconfig")
@@ -12,9 +12,13 @@ return {
 			return
 		end
 
+		local neodev_present, neodev = pcall(require, "neodev")
+		if neodev_present then
+			neodev.setup()
+		end
+
 		require("plugins.lsp.handlers").setup()
 		require("plugins.lsp.mason")
 		require("plugins.lsp.null-ls")
-		require("fidget").setup()
 	end,
 }

@@ -1,5 +1,10 @@
 return {
 	"nvim-lualine/lualine.nvim",
+	event = { "VimEnter" },
+	dependencies = {
+		"nvim-tree/nvim-web-devicons",
+		"linrongbin16/lsp-progress.nvim",
+	},
 	config = function()
 		-- Load theme before lualine
 		local theme_ok, _ = pcall(require, "vscode")
@@ -12,10 +17,6 @@ return {
 			return
 		end
 
-		local hide_in_width = function()
-			return vim.fn.winwidth(0) > 80
-		end
-
 		local diagnostics = {
 			"diagnostics",
 			sources = { "nvim_diagnostic" },
@@ -26,13 +27,6 @@ return {
 			always_visible = true,
 		}
 
-		local diff = {
-			"diff",
-			colored = false,
-			symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
-			cond = hide_in_width,
-		}
-
 		local mode = {
 			"mode",
 			fmt = function(str)
@@ -41,32 +35,24 @@ return {
 		}
 
 		local lsp_client = function()
-			local icon = " "
-			local msg = icon .. "[inactive]"
-			local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-			local clients = vim.lsp.get_active_clients()
-			if next(clients) == nil then
-				return msg
+			local buf_clients = vim.lsp.get_active_clients({ bufnr = 0 })
+			if #buf_clients == 0 then
+				return "LSP Inactive"
 			end
-			-- TODO: add a better client validation
-			local clients_msg = "["
-			for k, client in ipairs(clients) do
-				local filetypes = client.config.filetypes
-				if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-					clients_msg = clients_msg .. client.name
-					if k ~= #clients then
-						clients_msg = clients_msg .. ", "
-					end
+
+			local buf_client_names = {}
+
+			-- add client
+			for _, client in pairs(buf_clients) do
+				if client.name ~= "null-ls" then
+					table.insert(buf_client_names, client.name)
 				end
 			end
 
-			clients_msg = icon .. clients_msg .. "]"
+			local unique_client_names = table.concat(buf_client_names, ", ")
+			local language_servers = string.format("[%s]", unique_client_names)
 
-			if string.len(clients_msg) == 6 then
-				return msg
-			end
-
-			return clients_msg
+			return language_servers
 		end
 
 		local filetype = {
@@ -120,11 +106,14 @@ return {
 				always_divide_middle = true,
 			},
 			sections = {
-				lualine_a = { branch, diagnostics },
+				lualine_a = { branch },
 				lualine_b = { mode },
-				lualine_c = { lsp_client },
-				-- lualine_x = { "encoding", "fileformat", "filetype" },
-				lualine_x = { diff, spaces, "encoding", filetype },
+				lualine_c = { lsp_client, require("lsp-progress").progress },
+				lualine_x = {
+					spaces,
+					"encoding", -- "fileformat", "filetype"
+					filetype,
+				},
 				lualine_y = { location },
 				lualine_z = { progress },
 			},

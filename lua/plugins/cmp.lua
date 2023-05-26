@@ -7,7 +7,6 @@ return {
 		"saadparwaiz1/cmp_luasnip", -- snippet completions
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-nvim-lua",
-		"hrsh7th/cmp-nvim-lsp-signature-help",
 		"davidsierradz/cmp-conventionalcommits",
 		"L3MON4D3/LuaSnip", --snippet engine
 		"rafamadriz/friendly-snippets", -- a bunch of snippets to use
@@ -147,7 +146,6 @@ return {
 				{ name = "luasnip" },
 				{ name = "buffer" },
 				{ name = "path" },
-				{ name = "nvim_lsp_signature_help" },
 			},
 			confirm_opts = {
 				behavior = cmp.ConfirmBehavior.Replace,

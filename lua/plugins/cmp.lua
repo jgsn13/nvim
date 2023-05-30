@@ -146,6 +146,7 @@ return {
 				{ name = "luasnip" },
 				{ name = "buffer" },
 				{ name = "path" },
+				{ name = "neorg" },
 			},
 			confirm_opts = {
 				behavior = cmp.ConfirmBehavior.Replace,

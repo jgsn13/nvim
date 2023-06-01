@@ -3,7 +3,6 @@ return {
     event = { "VimEnter" },
     dependencies = {
         "nvim-tree/nvim-web-devicons",
-        "linrongbin16/lsp-progress.nvim",
     },
     config = function()
         -- Load theme before lualine
@@ -15,11 +14,6 @@ return {
         local status_ok, lualine = pcall(require, "lualine")
         if not status_ok then
             return
-        end
-
-        local progress_ok, lsp_progress = pcall(require, 'lsp-progress')
-        if progress_ok then
-            lsp_progress.setup()
         end
 
         local mode = {
@@ -89,7 +83,7 @@ return {
             sections = {
                 lualine_a = { branch },
                 lualine_b = { mode },
-                lualine_c = { lsp_client, progress_ok and lsp_progress.progress or nil },
+                lualine_c = { lsp_client },
                 lualine_x = {
                     {
                         'fileformat',

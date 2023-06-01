@@ -17,15 +17,10 @@ return {
             return
         end
 
-        local diagnostics = {
-            "diagnostics",
-            sources = { "nvim_diagnostic" },
-            sections = { "error", "warn" },
-            symbols = { error = " ", warn = " " },
-            colored = false,
-            update_in_insert = false,
-            always_visible = true,
-        }
+        local progress_ok, lsp_progress = pcall(require, 'lsp-progress')
+        if progress_ok then
+            lsp_progress.setup()
+        end
 
         local mode = {
             "mode",
@@ -69,28 +64,11 @@ return {
 
         local location = {
             "location",
-            padding = 0,
+            padding = {
+                left = 0,
+                right = 1
+            },
         }
-
-        -- cool function for progress
-        local progress = function()
-            local current_line = vim.fn.line(".")
-            local total_lines = vim.fn.line("$")
-            local chars = {
-                "__",
-                "▁▁",
-                "▂▂",
-                "▃▃",
-                "▄▄",
-                "▅▅",
-                "▆▆",
-                "▇▇",
-                "██",
-            }
-            local line_ratio = current_line / total_lines
-            local index = math.ceil(line_ratio * #chars)
-            return chars[index]
-        end
 
         local spaces = function()
             return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
@@ -100,22 +78,33 @@ return {
             options = {
                 icons_enabled = true,
                 theme = "tokyonight",
-                component_separators = { left = "", right = "" },
-                section_separators = { left = "", right = "" },
+                -- component_separators = { left = '', right = '' },
+                -- section_separators = { left = '', right = '' },
+                component_separators = { left = '', right = '' },
+                section_separators = { left = '', right = '' },
                 disabled_filetypes = { "dashboard", "NvimTree", "Outline" },
                 always_divide_middle = true,
+                globalstatus = true
             },
             sections = {
                 lualine_a = { branch },
                 lualine_b = { mode },
-                lualine_c = { lsp_client, require("lsp-progress").progress },
+                lualine_c = { lsp_client, progress_ok and lsp_progress.progress or nil },
                 lualine_x = {
+                    {
+                        'fileformat',
+                        symbols = {
+                            unix = '', -- e712
+                            dos = '', -- e70f
+                            mac = '', -- e711
+                        }
+                    },
                     spaces,
                     "encoding", -- "fileformat", "filetype"
-                    filetype,
                 },
-                lualine_y = { location },
-                lualine_z = { progress },
+                lualine_y = {
+                    filetype },
+                lualine_z = { location },
             },
             inactive_sections = {
                 lualine_a = {},

@@ -1,4 +1,4 @@
-# Neovim Setup on Linux:
+# Setup on Linux
 
 To set up Neovim on Linux, follow these steps:
 
@@ -10,7 +10,10 @@ git clone https://github.com/jgsn13/nvim ~/.config/
 
 Feel free to explore the repository and adapt the Neovim settings to suit your coding needs.
 
-## Useful guidelines:
+## Screenshot
+![Screenshot from null-ls configuration file](.media/screenshot.png)
+
+## Useful guidelines
 
 - Change contents within curly braces, including the braces themselves: `ci{`.
 - Copy current line and the next 5 lines below it: `y5j`.

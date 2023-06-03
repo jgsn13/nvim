@@ -39,3 +39,7 @@ Feel free to explore the repository and adapt the Neovim settings to suit your c
 - Open command-line window with `q:` for executing Ex commands and editing them before execution.
 - Navigate quickly with marks by setting (`ma`) and jumping (`'a`) to specific locations in the file.
 - Leverage registers (`"ayiw`) to store and manipulate text snippets for later use (`"ap` for pasting).
+
+## License
+
+This project is licensed under the [GPL-2.0 License](LICENSE). For more information, please see [GNU General Public License version 2.0](https://www.gnu.org/licenses/gpl-2.0.html).

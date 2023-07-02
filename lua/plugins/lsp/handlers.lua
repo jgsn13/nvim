@@ -44,15 +44,6 @@ local function lsp_keymaps(bufnr)
     local lsp_code_actions = vim.lsp.buf.code_action
     local lsp_range_code_actions = vim.lsp.buf.code_action
 
-    local cosmicui_ok, cosmicui = pcall(require, 'cosmic-ui')
-
-    if cosmicui_ok then
-        lsp_rename = cosmicui.rename
-        lsp_code_actions = cosmicui.code_actions
-        lsp_range_code_actions = cosmicui.range_code_actions
-    end
-
-
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)

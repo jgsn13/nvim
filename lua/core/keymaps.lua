@@ -36,6 +36,9 @@ KEYMAP("n", "<A-l>", ":noh<CR>", OPTS)
 KEYMAP("n", "<S-l>", ":bnext<CR>", OPTS)
 KEYMAP("n", "<S-h>", ":bprevious<CR>", OPTS)
 
+-- Delete buffer
+KEYMAP("n", "<C-q>", ":bd!<CR>", OPTS)
+
 -- Navigation within insert mode
 KEYMAP("i", "<C-h>", "<Left>", OPTS)
 KEYMAP("i", "<C-l>", "<Right>", OPTS)
@@ -101,8 +104,8 @@ KEYMAP("n", "n", "nzz", OPTS)
 
 -- Buffer stuff
 KEYMAP("n", "<C-a>", ":%y+<CR>", OPTS) -- copy whole file content
-KEYMAP("n", "<C-c>", ":<C-f>", OPTS) -- see cmd history
-KEYMAP("n", "<C-s>", ":w<CR>", OPTS) -- ctrl + s to save file
+KEYMAP("n", "<C-c>", ":<C-f>", OPTS)   -- see cmd history
+KEYMAP("n", "<C-s>", ":w<CR>", OPTS)   -- ctrl + s to save file
 
 -- KEYMAP("n", ";", "A;<Esc>", OPTS) -- Insert semicolon
 -- KEYMAP("n", ",", "A,<Esc>", OPTS) -- Insert comma
@@ -112,20 +115,20 @@ KEYMAP("t", "jk", "<C-\\><C-n>", { silent = true })
 
 -- Open terminals
 KEYMAP(
-	"n",
-	"<leader>h",
-	":execute 13 .. 'new +terminal' | let b:term_type = 'hori' | startinsert <CR>",
-	OPTS
+    "n",
+    "<leader>h",
+    ":execute 13 .. 'new +terminal' | let b:term_type = 'hori' | startinsert <CR>",
+    OPTS
 )
 KEYMAP(
-	"n",
-	"<leader>v",
-	":execute 'vnew +terminal' | let b:term_type = 'vert' | startinsert <CR>",
-	OPTS
+    "n",
+    "<leader>v",
+    ":execute 'vnew +terminal' | let b:term_type = 'vert' | startinsert <CR>",
+    OPTS
 )
 KEYMAP(
-	"n",
-	"<leader>t",
-	":execute 'terminal' | let b:term_type = 'wind' | startinsert <CR>",
-	OPTS
+    "n",
+    "<leader>t",
+    ":execute 'terminal' | let b:term_type = 'wind' | startinsert <CR>",
+    OPTS
 )

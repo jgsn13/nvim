@@ -1,17 +1,17 @@
 return {
-	{
-		"famiu/bufdelete.nvim",
-		cmd = { "Bdelete", "Bwipeout" },
-		keys = {
-			{
-				"<C-q>",
-				":Bdelete<CR>",
-				mode = "n",
-				silent = true,
-				desc = "Delete buffer",
-			},
-		},
-	},
+	--[[ { ]]
+	--[[ 	"famiu/bufdelete.nvim", ]]
+	--[[ 	cmd = { "Bdelete", "Bwipeout" }, ]]
+	--[[ 	keys = { ]]
+	--[[ 		{ ]]
+	--[[ 			"<C-q>", ]]
+	--[[ 			":Bdelete<CR>", ]]
+	--[[ 			mode = "n", ]]
+	--[[ 			silent = true, ]]
+	--[[ 			desc = "Delete buffer", ]]
+	--[[ 		}, ]]
+	--[[ 	}, ]]
+	--[[ }, ]]
 	{
 		"max397574/better-escape.nvim",
 		event = "InsertCharPre",

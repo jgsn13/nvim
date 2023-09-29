@@ -2,21 +2,14 @@ return {
     {
         "lukas-reineke/indent-blankline.nvim",
         event = { "BufReadPost", "BufNewFile" },
-        opts = {
-            -- char = "▏",
-            char = "│",
-            filetype_exclude = {
-                "help",
-                "alpha",
-                "dashboard",
-                "neo-tree",
-                "Trouble",
-                "lazy",
-                "mason",
-            },
-            show_trailing_blankline_indent = false,
-            show_current_context = false,
-        },
+        init = function()
+            local status_ok, ibl = pcall(require, "ibl")
+            if not status_ok then
+                return
+            end
+
+            ibl.setup()
+        end
     },
     { "MunifTanjim/nui.nvim", lazy = true },
     {

@@ -78,4 +78,3 @@ for scope, table in pairs(options) do
 end
 
 vim.g.editorconfig = true
-vim.cmd("colorscheme retrobox")

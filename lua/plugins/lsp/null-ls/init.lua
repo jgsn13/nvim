@@ -9,7 +9,7 @@ if not status_ok_2 then
 end
 
 local formatting = null_ls.builtins.formatting
-local diagnostics = null_ls.builtins.diagnostics
+-- local diagnostics = null_ls.builtins.diagnostics
 local formatting_settings = require("plugins.lsp.null-ls.formatting")
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
@@ -27,7 +27,7 @@ null_ls.setup({
 
         -- Diagnostics [https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#diagnostics]
         -- diagnostics.eslint, -- https://eslint.org/
-        diagnostics.eslint_d, -- https://eslint.org/
+        -- diagnostics.eslint_d, -- https://eslint.org/
         -- diagnostics.flake8,               -- https://flake8.pycqa.org/en/latest/
         -- diagnostics.pylint,               -- https://pypi.org/project/pylint/
         -- diagnostics.dotenv_linter,        -- https://github.com/dotenv-linter/dotenv-linter
@@ -70,4 +70,4 @@ mason_null_ls.setup({
     },
 })
 
-KEYMAP("n", "<leader>f", vim.lsp.buf.format, OPTS)
+vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, { noremap = true, silent = true })

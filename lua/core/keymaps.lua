@@ -1,12 +1,4 @@
-OPTS = { noremap = true, silent = true }
-
--- Shorten function name
-KEYMAP = vim.keymap.set
-
--- Remap space as leader key
-KEYMAP("", "<Space>", "<Nop>", OPTS)
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+local opts = { noremap = true, silent = true }
 
 -- Modes
 -- - normal_mode = "n",
@@ -16,82 +8,86 @@ vim.g.maplocalleader = " "
 -- - term_mode = "t",
 -- - command_mode = "c",
 
--- Normal --
+-- Remap space as leader key
+vim.keymap.set("", "<Space>", "<Nop>", opts)
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 -- Better window navigation
-KEYMAP("n", "<C-h>", "<C-w>h", OPTS)
-KEYMAP("n", "<C-j>", "<C-w>j", OPTS)
-KEYMAP("n", "<C-k>", "<C-w>k", OPTS)
-KEYMAP("n", "<C-l>", "<C-w>l", OPTS)
+vim.keymap.set("n", "<C-h>", "<C-w>h", opts)
+vim.keymap.set("n", "<C-j>", "<C-w>j", opts)
+vim.keymap.set("n", "<C-k>", "<C-w>k", opts)
+vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
 
 -- Resize with arrows
-KEYMAP("n", "<C-Up>", ":resize +2<CR>", OPTS)
-KEYMAP("n", "<C-Down>", ":resize -2<CR>", OPTS)
-KEYMAP("n", "<C-Left>", ":vertical resize -2<CR>", OPTS)
-KEYMAP("n", "<C-Right>", ":vertical resize +2<CR>", OPTS)
+vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", opts)
+vim.keymap.set("n", "<C-Down>", ":resize -2<CR>", opts)
+vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", opts)
+vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- No highlight
-KEYMAP("n", "<A-l>", ":noh<CR>", OPTS)
+vim.keymap.set("n", "<A-l>", ":noh<CR>", opts)
 
 -- Navigate buffers
-KEYMAP("n", "<S-l>", ":bnext<CR>", OPTS)
-KEYMAP("n", "<S-h>", ":bprevious<CR>", OPTS)
+vim.keymap.set("n", "<S-l>", ":bnext<CR>", opts)
+vim.keymap.set("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Delete buffer
-KEYMAP("n", "<C-q>", ":bd!<CR>", OPTS)
+vim.keymap.set("n", "<C-q>", ":bd!<CR>", opts)
 
 -- Navigation within insert mode
-KEYMAP("i", "<C-h>", "<Left>", OPTS)
-KEYMAP("i", "<C-l>", "<Right>", OPTS)
-KEYMAP("i", "<C-k>", "<Up>", OPTS)
-KEYMAP("i", "<C-j>", "<Down>", OPTS)
-KEYMAP("i", "<C-e>", "<End>", OPTS)
-KEYMAP("i", "<C-a>", "<ESC>^i", OPTS)
+vim.keymap.set("i", "<C-h>", "<Left>", opts)
+vim.keymap.set("i", "<C-l>", "<Right>", opts)
+vim.keymap.set("i", "<C-k>", "<Up>", opts)
+vim.keymap.set("i", "<C-j>", "<Down>", opts)
+vim.keymap.set("i", "<C-e>", "<End>", opts)
+vim.keymap.set("i", "<C-a>", "<ESC>^i", opts)
 
 -- Stay in indent mode
-KEYMAP("v", "<", "<gv", OPTS)
-KEYMAP("v", ">", ">gv", OPTS)
+vim.keymap.set("v", "<", "<gv", opts)
+vim.keymap.set("v", ">", ">gv", opts)
 
 -- Don't copy the replaced text after pasting in visual mode
-KEYMAP("v", "p", '"_dP', OPTS)
+vim.keymap.set("v", "p", '"_dP', opts)
 
 -- Don't yank text on cut ( x )
-KEYMAP("n", "x", '"_x', OPTS)
-KEYMAP("v", "x", '"_x', OPTS)
+vim.keymap.set("n", "x", '"_x', opts)
+vim.keymap.set("v", "x", '"_x', opts)
 
 -- Don't yank text on delete ( d | dd )
-KEYMAP("n", "dd", '"_dd', OPTS)
-KEYMAP("v", "d", '"_d', OPTS)
+vim.keymap.set("n", "dd", '"_dd', opts)
+vim.keymap.set("v", "d", '"_d', opts)
 
 -- Stay selected on visual mode
-KEYMAP("v", "y", "ygv", OPTS)
+vim.keymap.set("v", "y", "ygv", opts)
 
 -- Select all
-KEYMAP("n", "yg", "ggVG", OPTS)
+vim.keymap.set("n", "yg", "ggVG", opts)
 
 -- Move text up and down
-KEYMAP("v", "<A-j>", ":m .+1<CR>==", OPTS)
-KEYMAP("n", "<A-j>", ":m .+1<CR>==", OPTS)
-KEYMAP("v", "<A-k>", ":m .-2<CR>==", OPTS)
-KEYMAP("n", "<A-k>", ":m .-2<CR>==", OPTS)
+vim.keymap.set("v", "<A-j>", ":m .+1<CR>==", opts)
+vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", opts)
+vim.keymap.set("v", "<A-k>", ":m .-2<CR>==", opts)
+vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", opts)
 
 -- Move text up and down
-KEYMAP("x", "J", ":move '>+1<CR>gv-gv", OPTS)
-KEYMAP("x", "K", ":move '<-2<CR>gv-gv", OPTS)
-KEYMAP("x", "<A-j>", ":move '>+1<CR>gv-gv", OPTS)
-KEYMAP("x", "<A-k>", ":move '<-2<CR>gv-gv", OPTS)
+vim.keymap.set("x", "J", ":move '>+1<CR>gv-gv", opts)
+vim.keymap.set("x", "K", ":move '<-2<CR>gv-gv", opts)
+vim.keymap.set("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
+vim.keymap.set("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Text selection
-KEYMAP("n", "<leader>x", "viw", OPTS)
-KEYMAP("n", "<leader>'", "vi'", OPTS)
-KEYMAP("n", '<leader>"', 'vi"', OPTS)
-KEYMAP("n", "<leader>`", "vi`", OPTS)
-KEYMAP("n", "<leader>(", "vi(", OPTS)
-KEYMAP("n", "<leader>{", "vi{", OPTS)
-KEYMAP("n", "<leader>[", "vi[", OPTS)
+vim.keymap.set("n", "<leader>x", "viw", opts)
+vim.keymap.set("n", "<leader>'", "vi'", opts)
+vim.keymap.set("n", '<leader>"', 'vi"', opts)
+vim.keymap.set("n", "<leader>`", "vi`", opts)
+vim.keymap.set("n", "<leader>(", "vi(", opts)
+vim.keymap.set("n", "<leader>{", "vi{", opts)
+vim.keymap.set("n", "<leader>[", "vi[", opts)
 
 -- Jump words on insert mode
-KEYMAP("i", "<C-w>", "<C-\\><C-O>w", OPTS)
-KEYMAP("i", "<C-b>", "<C-\\><C-O>b", OPTS)
+vim.keymap.set("i", "<C-w>", "<C-\\><C-O>w", opts)
+vim.keymap.set("i", "<C-b>", "<C-\\><C-O>b", opts)
 
 -- Navigate without leave command mode
 vim.cmd("cnoremap <C-H> <Left>")
@@ -100,35 +96,25 @@ vim.cmd("cnoremap <C-A> <S-Left>")
 vim.cmd("cnoremap <C-E> <S-Right>")
 
 -- Display search result in center of the screen
-KEYMAP("n", "n", "nzz", OPTS)
+vim.keymap.set("n", "n", "nzz", opts)
 
 -- Buffer stuff
-KEYMAP("n", "<C-a>", ":%y+<CR>", OPTS) -- copy whole file content
-KEYMAP("n", "<C-c>", ":<C-f>", OPTS)   -- see cmd history
-KEYMAP("n", "<C-s>", ":w<CR>", OPTS)   -- ctrl + s to save file
-
--- KEYMAP("n", ";", "A;<Esc>", OPTS) -- Insert semicolon
--- KEYMAP("n", ",", "A,<Esc>", OPTS) -- Insert comma
+vim.keymap.set("n", "<C-a>", ":%y+<CR>", opts) -- copy whole file content
+vim.keymap.set("n", "<C-c>", ":<C-f>", opts)   -- see cmd history
+vim.keymap.set("n", "<C-s>", ":w<CR>", opts)   -- ctrl + s to save file
 
 -- Get out of terminal mode
-KEYMAP("t", "jk", "<C-\\><C-n>", { silent = true })
+vim.keymap.set("t", "jk", "<C-\\><C-n>", { silent = true })
 
 -- Open terminals
-KEYMAP(
-    "n",
-    "<leader>h",
-    ":execute 13 .. 'new +terminal' | let b:term_type = 'hori' | startinsert <CR>",
-    OPTS
-)
-KEYMAP(
-    "n",
-    "<leader>v",
-    ":execute 'vnew +terminal' | let b:term_type = 'vert' | startinsert <CR>",
-    OPTS
-)
-KEYMAP(
-    "n",
-    "<leader>t",
-    ":execute 'terminal' | let b:term_type = 'wind' | startinsert <CR>",
-    OPTS
-)
+vim.keymap.set("n", "<leader>h", ":execute 13 .. 'new +terminal' | let b:term_type = 'hori' | startinsert <CR>", opts)
+vim.keymap.set("n", "<leader>v", ":execute 'vnew +terminal' | let b:term_type = 'vert' | startinsert <CR>", opts)
+vim.keymap.set("n", "<leader>t", ":execute 'terminal' | let b:term_type = 'wind' | startinsert <CR>", opts)
+
+if vim.lsp.inlay_hint then
+    vim.keymap.set("n", "<C-i>", function()
+        vim.lsp.inlay_hint(0, nil)
+    end, {
+        desc = "Toggle Inlay Hints",
+    })
+end

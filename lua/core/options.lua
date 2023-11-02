@@ -33,28 +33,29 @@ local options = {
         cursorline = true,                       -- highlight the current line
         number = true,                           -- set numbered lines
         relativenumber = true,                   -- set relative numbered lines
-        numberwidth = 4,                         -- set number column width to 2 {default 4}
+        numberwidth = 2,                         -- set number column width to 2 {default 4}
         signcolumn = "yes",                      -- always show the sign column, otherwise it would shift the text each time
         wrap = false,                            -- display lines as one long line
         scrolloff = 8,                           -- Number of lines to keep above and below the cursor
         sidescrolloff = 8,                       -- Number of columns to keep at the sides of the cursor
-        -- guifont = "FiraCode NF:h10", -- the font used in graphical neovim applications
+        -- guifont = "FiraCode NF:h10",          -- the font used in graphical neovim applications
         -- guifontwide = "Noto Color Emoji",
         -- statuscolumn = "%C %l %r %s %T",
-        breakindent = true,                                          -- Wrap indent to match  line start
-        copyindent = true,                                           -- Copy the previous indentation on autoindenting
-        history = 100,                                               -- Number of commands to remember in a history table
-        infercase = true,                                            -- Infer cases in keyword completion
-        laststatus = 3,                                              -- globalstatus
-        linebreak = true,                                            -- Wrap lines at 'breakat'
-        preserveindent = true,                                       -- Preserve indent structure as much as possible
-        splitkeep = vim.fn.has("nvim-0.9") == 1 and "screen" or nil, -- Maintain code view when splitting
-        virtualedit = "block",                                       -- allow going past end of line in visual block mode
+        breakindent = true,    -- Wrap indent to match  line start
+        copyindent = true,     -- Copy the previous indentation on autoindenting
+        history = 100,         -- Number of commands to remember in a history table
+        infercase = true,      -- Infer cases in keyword completion
+        laststatus = 3,        -- globalstatus
+        linebreak = true,      -- Wrap lines at 'breakat'
+        preserveindent = true, -- Preserve indent structure as much as possible
+        splitkeep = "screen",      -- Maintain code view when splitting
+        virtualedit = "all",   -- allow going past end of line in visual block mode
     },
     o = {
         fillchars = [[eob: ]],
     },
     g = {
+        editorconfig = true,
         highlighturl_enabled = true,     -- highlight URLs by default
         mapleader = " ",                 -- set leader key
         autoformat_enabled = true,       -- enable or disable auto formatting at start (lsp.formatting.format_on_save must be enabled)
@@ -76,5 +77,3 @@ for scope, table in pairs(options) do
         vim[scope][setting] = value
     end
 end
-
-vim.g.editorconfig = true

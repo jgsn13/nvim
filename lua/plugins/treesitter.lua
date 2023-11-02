@@ -4,9 +4,7 @@ return {
     dependencies = {
         {
             "lukas-reineke/indent-blankline.nvim",
-            "p00f/nvim-ts-rainbow",
             "windwp/nvim-ts-autotag",
-            -- "nvim-treesitter/nvim-treesitter-angular", -- this breaks treesitter
             "JoosepAlviste/nvim-ts-context-commentstring",
         },
     },
@@ -38,11 +36,6 @@ return {
                 enable = true,
                 disable = { "yaml" },
             },
-        }
-
-        options.rainbow = {
-            enable = true,
-            extended_mode = true,
         }
 
         options.autotag = {

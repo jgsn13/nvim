@@ -48,8 +48,8 @@ local options = {
         laststatus = 3,        -- globalstatus
         linebreak = true,      -- Wrap lines at 'breakat'
         preserveindent = true, -- Preserve indent structure as much as possible
-        splitkeep = "screen",      -- Maintain code view when splitting
-        virtualedit = "all",   -- allow going past end of line in visual block mode
+        splitkeep = "screen",  -- Maintain code view when splitting
+        virtualedit = "block", -- allow going past end of line in visual block mode
     },
     o = {
         fillchars = [[eob: ]],

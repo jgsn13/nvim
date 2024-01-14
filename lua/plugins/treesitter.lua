@@ -3,7 +3,6 @@ return {
     build = ":TSUpdate",
     dependencies = {
         {
-            "lukas-reineke/indent-blankline.nvim",
             "windwp/nvim-ts-autotag",
             "JoosepAlviste/nvim-ts-context-commentstring",
             "nvim-treesitter/nvim-treesitter-context"
@@ -47,12 +46,15 @@ return {
                     "typescriptreact",
                 },
             },
-            context_commentstring = {
-                enable = true,
-            },
         }
 
         treesitter.setup(options)
+
+        local commentstring_present, commentstring = pcall(require, "ts_context_commentstring")
+        if commentstring_present then
+            vim.g.skip_ts_context_commentstring_module = true;
+            commentstring.setup()
+        end
 
         local ts_context_present, ts_context = pcall(require, 'treesitter-context');
         if ts_context_present then

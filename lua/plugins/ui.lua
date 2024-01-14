@@ -1,16 +1,4 @@
 return {
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        event = { "BufReadPost", "BufNewFile" },
-        init = function()
-            local status_ok, ibl = pcall(require, "ibl")
-            if not status_ok then
-                return
-            end
-
-            ibl.setup()
-        end
-    },
     { "MunifTanjim/nui.nvim", lazy = true },
     {
         "nvim-tree/nvim-web-devicons",
@@ -37,16 +25,6 @@ return {
                         icon = "",
                         color = "#74c2c9",
                         name = "text",
-                    },
-                    asm = {
-                        icon = "",
-                        color = "#C596C7",
-                        name = "assembly",
-                    },
-                    s = {
-                        icon = "",
-                        color = "#C596C7",
-                        name = "assembly",
                     },
                 },
             })

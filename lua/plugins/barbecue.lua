@@ -14,11 +14,10 @@ return {
         if not status_ok2 then
             return
         end
-        local theme_ok, _ = pcall(require, "tokyonight")
 
         barbecue.setup({
             create_autocmd = false,
-            theme = theme_ok and "tokyonight" or "auto"
+            theme = "auto"
         })
 
         vim.api.nvim_create_autocmd({

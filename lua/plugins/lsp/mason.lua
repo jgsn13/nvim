@@ -35,9 +35,9 @@ mason_lspconfig.setup_handlers({
         local lua_ls_opts = require("plugins.lsp.settings.lua_ls")
         lspconfig.lua_ls.setup(lua_ls_opts)
     end,
-    ["tsserver"] = function()
-        local tsserver_opts = require("plugins.lsp.settings.tsserver")
-        lspconfig.tsserver.setup(tsserver_opts)
+    ["ts_ls"] = function()
+        local ts_ls_opts = require("plugins.lsp.settings.ts_ls")
+        lspconfig.ts_ls.setup(ts_ls_opts)
     end,
     ["jsonls"] = function()
         local jsonls_opts = require("plugins.lsp.settings.jsonls")

@@ -20,10 +20,10 @@ return {
         end
 
         vim.cmd([[
-            augroup hide_tree_statuscolumn
-              autocmd!
-              autocmd BufEnter * if &syntax ==# 'NvimTree' | setlocal statuscolumn=%r | endif
-            augroup END
+            :hi      NvimTreeExecFile    guifg=#ffa0a0
+            :hi      NvimTreeSpecialFile guifg=#ff80ff gui=underline
+            :hi      NvimTreeSymlink     guifg=Yellow  gui=italic
+            :hi link NvimTreeImageFile   Title
         ]])
 
         nvimtree.setup({
@@ -98,8 +98,17 @@ return {
                 vim.keymap.set('n', '<2-RightMouse>', api.tree.change_root_to_node, opts('CD'))
                 -- stylua: ignore end
             end,
+            sort = {
+                sorter = "case_sensitive",
+            },
             view = {
                 adaptive_size = true,
+            },
+            renderer = {
+                group_empty = true,
+            },
+            filters = {
+                dotfiles = true,
             },
         })
     end,

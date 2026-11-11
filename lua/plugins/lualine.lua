@@ -1,125 +1,157 @@
 return {
     "nvim-lualine/lualine.nvim",
-    event = { "VimEnter" },
+    event = "VeryLazy",
     dependencies = {
         "nvim-tree/nvim-web-devicons",
     },
     config = function()
-        -- Load theme before lualine
-        local onedark_ok, _ = pcall(require, "onedarkpro")
-
         local status_ok, lualine = pcall(require, "lualine")
         if not status_ok then
             return
         end
 
-        local mode = {
-            "mode",
-            fmt = function(str)
-                return "-- " .. str .. " --"
-            end,
+        local mode_map = {
+            ["n"] = { "NORMAL", "" },
+            ["no"] = { "O-PENDING", "" },
+            ["nov"] = { "O-PENDING", "" },
+            ["noV"] = { "O-PENDING", "" },
+            ["no\22"] = { "O-PENDING", "" },
+            ["niI"] = { "NORMAL", "" },
+            ["niR"] = { "NORMAL", "" },
+            ["niV"] = { "NORMAL", "" },
+            ["nt"] = { "NORMAL", "" },
+            ["v"] = { "VISUAL", "󰈈" },
+            ["vs"] = { "VISUAL", "󰈈" },
+            ["V"] = { "V-LINE", "󰈈" },
+            ["Vs"] = { "V-LINE", "󰈈" },
+            ["\22"] = { "V-BLOCK", "󰈈" },
+            ["\22s"] = { "V-BLOCK", "󰈈" },
+            ["s"] = { "SELECT", "󰒅" },
+            ["S"] = { "S-LINE", "󰒅" },
+            ["\19"] = { "S-BLOCK", "󰒅" },
+            ["i"] = { "INSERT", "" },
+            ["ic"] = { "INSERT", "" },
+            ["ix"] = { "INSERT", "" },
+            ["R"] = { "REPLACE", "󰛄" },
+            ["Rc"] = { "REPLACE", "󰛄" },
+            ["Rx"] = { "REPLACE", "󰛄" },
+            ["Rv"] = { "V-REPLACE", "󰛄" },
+            ["Rvc"] = { "V-REPLACE", "󰛄" },
+            ["Rvx"] = { "V-REPLACE", "󰛄" },
+            ["c"] = { "COMMAND", "" },
+            ["cv"] = { "EX", "" },
+            ["ce"] = { "EX", "" },
+            ["r"] = { "PROMPT", "" },
+            ["rm"] = { "MORE", "" },
+            ["r?"] = { "CONFIRM", "" },
+            ["!"] = { "SHELL", "" },
+            ["t"] = { "TERMINAL", "" },
         }
 
-        local lsp_client = function()
-            local buf_clients = vim.lsp.get_active_clients({ bufnr = 0 })
-            if #buf_clients == 0 then
-                return "LSP Inactive"
-            end
-
-            local buf_client_names = {}
-
-            -- add client
-            for _, client in pairs(buf_clients) do
-                if client.name ~= "null-ls" then
-                    table.insert(buf_client_names, client.name)
-                end
-            end
-
-            local unique_client_names = table.concat(buf_client_names, ", ")
-            local language_servers = string.format("[%s]", unique_client_names)
-
-            return language_servers
-        end
+        local mode = {
+            function()
+                local m = vim.api.nvim_get_mode().mode
+                local info = mode_map[m] or { m, "" }
+                return string.format("%s %s", info[2], info[1])
+            end,
+            separator = { left = "", right = "" },
+            padding = { left = 1, right = 1 },
+        }
 
         local branch = {
             "branch",
-            icons_enabled = true,
             icon = "",
+            separator = { left = "", right = "" },
+            padding = { left = 1, right = 1 },
         }
 
-        local searchcount = {
-            "searchcount",
-            padding = {
-                left = 0,
-                right = 0
-            },
+        local diff = {
+            "diff",
+            colored = true,
+            symbols = { added = " ", modified = " ", removed = " " },
         }
 
-        local filetype = {
-            "filetype",
-            icons_enabled = true,
-            padding = {
-                left = 1,
-                right = 1
-            },
+        local diagnostics = {
+            "diagnostics",
+            sources = { "nvim_diagnostic" },
+            symbols = { error = " ", warn = " ", info = " ", hint = " " },
+            colored = true,
+        }
+
+        local lsp_client = {
+            function()
+                local get_clients = vim.lsp.get_clients or vim.lsp.get_active_clients
+                local buf_clients = get_clients({ bufnr = 0 })
+                if #buf_clients == 0 then
+                    return ""
+                end
+
+                local buf_client_names = {}
+                for _, client in pairs(buf_clients) do
+                    if client.name ~= "copilot" and client.name ~= "null-ls" then
+                        table.insert(buf_client_names, client.name)
+                    end
+                end
+
+                if #buf_client_names == 0 then
+                    return ""
+                end
+
+                return "  " .. table.concat(buf_client_names, ", ")
+            end,
+            cond = function()
+                local get_clients = vim.lsp.get_clients or vim.lsp.get_active_clients
+                return #get_clients({ bufnr = 0 }) > 0
+            end,
+            separator = { left = "", right = "" },
+            padding = { left = 1, right = 1 },
+        }
+
+        local indent_info = {
+            function()
+                return "󰌒 " .. vim.bo.shiftwidth
+            end,
+            separator = { left = "", right = "" },
+            padding = { left = 1, right = 1 },
         }
 
         local location = {
             "location",
-            padding = {
-                left = 0,
-                right = 1
-            },
+            separator = { left = "", right = "" },
+            padding = { left = 1, right = 1 },
         }
-
-        local progress = {
-            "progress",
-            padding = {
-                left = 0,
-                right = 1
-            },
-        }
-
-        local selectioncount = {
-            "selectioncount",
-            padding = {
-                left = 0,
-                right = 1
-            },
-        }
-
-        local spaces = function()
-            return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
-        end
 
         lualine.setup({
             options = {
                 icons_enabled = true,
-                theme = onedark_ok and "onedark" or "auto",
-                component_separators = { left = '', right = '' },
-                section_separators = { left = '', right = '' },
-                disabled_filetypes = { "dashboard", "NvimTree", "Outline" },
+                theme = "auto",
+                component_separators = "",
+                section_separators = { left = "", right = "" },
+                disabled_filetypes = {
+                    statusline = { "alpha", "dashboard", "NvimTree", "neo-tree", "Avante" },
+                },
                 always_divide_middle = true,
-                globalstatus = true
+                globalstatus = true,
             },
             sections = {
-                lualine_a = { branch },
-                lualine_b = { mode },
-                lualine_c = { lsp_client },
-                lualine_x = {
-                    {
-                        'fileformat',
-                        symbols = {
-                            unix = '', -- e712
-                            dos = '', -- e70f
-                            mac = '', -- e711
-                        }
-                    },
-                    spaces,
-                    "encoding", -- "fileformat", "filetype"
+                lualine_a = { mode },
+                lualine_b = { branch, diff },
+                lualine_c = {
+                    { "filename", file_status = true, path = 0 },
+                    diagnostics,
                 },
-                lualine_y = { searchcount, filetype },
-                lualine_z = { location, progress, selectioncount },
+                lualine_x = {
+                    lsp_client,
+                    {
+                        "filetype",
+                        icon_only = false,
+                        separator = { left = "", right = "" },
+                        padding = { left = 1, right = 1 },
+                    },
+                    indent_info,
+                },
+                lualine_y = { "progress" },
+                lualine_z = { location },
             },
             inactive_sections = {
                 lualine_a = {},
@@ -129,8 +161,6 @@ return {
                 lualine_y = {},
                 lualine_z = {},
             },
-            tabline = {},
-            extensions = {},
         })
     end,
 }

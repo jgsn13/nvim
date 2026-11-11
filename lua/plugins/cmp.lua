@@ -1,9 +1,9 @@
 return {
-    "hrsh7th/nvim-cmp",        -- The completion plugin
+    "hrsh7th/nvim-cmp",
     dependencies = {
-        "hrsh7th/cmp-buffer",  -- buffer completions
-        "hrsh7th/cmp-path",    -- path completions
-        "hrsh7th/cmp-cmdline", -- cmdline completions
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+        "hrsh7th/cmp-cmdline",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-nvim-lua",
     },
@@ -13,131 +13,106 @@ return {
             return
         end
 
-        local check_backspace = function()
-            local col = vim.fn.col(".") - 1
-            return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
-        end
-
-        --   פּ ﯟ   some other good icons
         local kind_icons = {
-            Text = "",
-            Method = "m",
-            Function = "",
-            Constructor = "",
-            Field = "",
-            Variable = "",
-            Class = "",
+            Text = "󰉿",
+            Method = "󰆧",
+            Function = "󰊕",
+            Constructor = "",
+            Field = "󰜢",
+            Variable = "󰀫",
+            Class = "󰠱",
             Interface = "",
             Module = "",
-            Property = "",
-            Unit = "",
-            Value = "",
+            Property = "󰜢",
+            Unit = "󰑭",
+            Value = "󰎠",
             Enum = "",
-            Keyword = "",
-            Snippet = "",
-            Color = "",
-            File = "",
-            Reference = "",
-            Folder = "",
+            Keyword = "󰌋",
+            Snippet = "",
+            Color = "󰏘",
+            File = "󰈙",
+            Reference = "󰈇",
+            Folder = "󰉋",
             EnumMember = "",
-            Constant = "",
-            Struct = "",
+            Constant = "󰏿",
+            Struct = "󰙅",
             Event = "",
-            Operator = "",
-            TypeParameter = "",
+            Operator = "󰆕",
+            TypeParameter = "󰅲",
+            Avante = "",
         }
-        -- find more here: https://www.nerdfonts.com/cheat-sheet
 
         cmp.setup({
+            snippet = {
+                expand = function(args)
+                    vim.snippet.expand(args.body)
+                end,
+            },
             mapping = {
                 ["<C-k>"] = cmp.mapping.select_prev_item(),
                 ["<C-j>"] = cmp.mapping.select_next_item(),
-                ["<C-b>"] = cmp.mapping(
-                    cmp.mapping.scroll_docs(-1),
-                    { "i", "c" }
-                ),
-                ["<C-f>"] = cmp.mapping(
-                    cmp.mapping.scroll_docs(1),
-                    { "i", "c" }
-                ),
-                ["<C-Space>"] = cmp.mapping(
-                    cmp.mapping.complete(),
-                    { "i", "c" }
-                ),
-                ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+                ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
+                ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+                ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+                ["<C-y>"] = cmp.config.disable,
                 ["<C-e>"] = cmp.mapping({
                     i = cmp.mapping.abort(),
                     c = cmp.mapping.close(),
                 }),
-                -- Accept currently selected item. If none selected, `select` first item.
-                -- Set `select` to `false` to only confirm explicitly selected items.
-                ["<CR>"] = cmp.mapping.confirm({ select = true }),
+                ["<CR>"] = cmp.mapping.confirm({ select = false }),
                 ["<Tab>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
                         cmp.select_next_item()
                     else
                         fallback()
                     end
-                end, {
-                    "i",
-                    "s",
-                }),
+                end, { "i", "s" }),
                 ["<S-Tab>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
                         cmp.select_prev_item()
                     else
                         fallback()
                     end
-                end, {
-                    "i",
-                    "s",
-                }),
+                end, { "i", "s" }),
             },
             formatting = {
                 fields = { "kind", "abbr", "menu" },
                 format = function(entry, vim_item)
-                    -- Kind icons
-                    vim_item.kind =
-                        string.format("%s", kind_icons[vim_item.kind])
-                    -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+                    local icon = kind_icons[vim_item.kind] or ""
+                    vim_item.kind = string.format("%s %s", icon, vim_item.kind)
                     vim_item.menu = ({
                         nvim_lsp = "[LSP]",
-                        nvim_lua = "[NVIM_LUA]",
-                        buffer = "[Buffer]",
+                        nvim_lua = "[NVIM]",
+                        buffer = "[Buf]",
                         path = "[Path]",
                         cmdline = "[CMD]",
-                    })[entry.source.name]
+                        avante_commands = "[Avante]",
+                        avante_mentions = "[Mention]",
+                        avante_files = "[File]",
+                    })[entry.source.name] or string.format("[%s]", entry.source.name)
                     return vim_item
                 end,
             },
-            sources = {
+            sources = cmp.config.sources({
+                { name = "avante_commands" },
+                { name = "avante_mentions" },
+                { name = "avante_files" },
                 { name = "nvim_lsp" },
                 { name = "nvim_lua" },
-                { name = "buffer" },
                 { name = "path" },
-                { name = "neorg" },
-            },
+            }, {
+                { name = "buffer", keyword_length = 3 },
+            }),
             confirm_opts = {
                 behavior = cmp.ConfirmBehavior.Replace,
                 select = false,
             },
             window = {
-                documentation = {
-                    border = {
-                        "╭",
-                        "─",
-                        "╮",
-                        "│",
-                        "╯",
-                        "─",
-                        "╰",
-                        "│",
-                    },
-                },
+                completion = cmp.config.window.bordered(),
+                documentation = cmp.config.window.bordered(),
             },
             experimental = {
                 ghost_text = false,
-                native_menu = false,
             },
         })
 

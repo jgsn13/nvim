@@ -7,7 +7,7 @@ local options = {
     opt = {
         backup = false,                          -- creates a backup file
         clipboard = "unnamedplus",               -- allows neovim to access the system clipboard
-        cmdheight = 3,                           -- more space in the neovim command line for displaying messages
+        cmdheight = 1,                           -- more space in editor, 1 line for command line
         completeopt = { "menuone", "noselect" }, -- mostly just for cmp
         conceallevel = 0,                        -- so that `` is visible in markdown files
         fileencoding = "utf-8",                  -- the encoding written to a file
@@ -58,7 +58,7 @@ local options = {
         editorconfig = true,
         highlighturl_enabled = true,     -- highlight URLs by default
         mapleader = " ",                 -- set leader key
-        autoformat_enabled = true,       -- enable or disable auto formatting at start (lsp.formatting.format_on_save must be enabled)
+        autoformat_enabled = false,      -- enable or disable auto formatting at start
         codelens_enabled = true,         -- enable or disable automatic codelens refreshing for lsp that support it
         lsp_handlers_enabled = true,     -- enable or disable default vim.lsp.handlers (hover and signatureHelp)
         cmp_enabled = true,              -- enable completion at start
@@ -66,8 +66,8 @@ local options = {
         diagnostics_mode = 3,            -- set the visibility of diagnostics in the UI (0=off, 1=only show in status line, 2=virtual text off, 3=all on)
         icons_enabled = true,            -- disable icons in the UI (disable if no nerd font is available)
         ui_notifications_enabled = true, -- disable notifications when toggling UI elements
-        loaded_netrw = false,
-        loaded_netrwPlugin = false,
+        loaded_netrw = 1,
+        loaded_netrwPlugin = 1,
     },
     t = { bufs = vim.api.nvim_list_bufs() }, -- initialize buffers for the current tab
 }

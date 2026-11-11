@@ -1,6 +1,22 @@
 return {
     { "MunifTanjim/nui.nvim", lazy = true },
     {
+        "stevearc/dressing.nvim",
+        event = "VeryLazy",
+        opts = {
+            input = {
+                default_prompt = "➤ ",
+                border = "rounded",
+            },
+            select = {
+                backend = { "telescope", "builtin" },
+                builtin = {
+                    border = "rounded",
+                },
+            },
+        },
+    },
+    {
         "nvim-tree/nvim-web-devicons",
         lazy = true,
         init = function()

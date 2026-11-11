@@ -1,27 +1,26 @@
 return {
     {
         "f-person/git-blame.nvim",
+        event = "VeryLazy",
+        opts = {
+            enabled = true,
+            date_format = "%r",
+        },
     },
     {
         "lewis6991/gitsigns.nvim",
-        init = function()
-            local status_ok, gitsigns = pcall(require, "gitsigns")
-            if not status_ok then
-                return
-            end
-
-            gitsigns.setup({
-                signs = {
-                    add = { text = "│" },
-                    change = { text = "│" },
-                    delete = { text = "_" },
-                    topdelete = { text = "‾" },
-                    changedelete = { text = "~" },
-                    untracked = { text = "┆" },
-                },
-                signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
-                numhl = true,      -- Toggle with `:Gitsigns toggle_numhl`
-            })
-        end,
+        event = { "BufReadPre", "BufNewFile" },
+        opts = {
+            signs = {
+                add = { text = "│" },
+                change = { text = "│" },
+                delete = { text = "_" },
+                topdelete = { text = "‾" },
+                changedelete = { text = "~" },
+                untracked = { text = "┆" },
+            },
+            signcolumn = true,
+            numhl = false,
+        },
     },
 }

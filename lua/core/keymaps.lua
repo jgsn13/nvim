@@ -113,7 +113,8 @@ vim.keymap.set("n", "<leader>t", ":execute 'terminal' | let b:term_type = 'wind'
 
 if vim.lsp.inlay_hint then
     vim.keymap.set("n", "<C-i>", function()
-        vim.lsp.inlay_hint(0, nil)
+        local is_enabled = vim.lsp.inlay_hint.is_enabled()
+        vim.lsp.inlay_hint.enable(not is_enabled)
     end, {
         desc = "Toggle Inlay Hints",
     })

@@ -9,6 +9,7 @@ return {
             { "<leader>c", group = "Code Actions / Format" },
             { "<leader>f", group = "Find / Telescope" },
             { "<leader>g", group = "Git" },
+            { "<leader>i", group = "i18n (Translations)" },
             { "<leader>l", group = "LSP" },
             { "<leader>p", group = "Packages (Lazy/Mason)" },
             { "<leader>t", group = "Terminal" },
